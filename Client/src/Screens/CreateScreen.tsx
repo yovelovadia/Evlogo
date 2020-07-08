@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import SettingsToolBar from "../Components/SettingsToolBar/SettingsToolBar";
-import DraggableImage from "../Components/DraggableImage";
+import DraggableImage from "../Components/BleesingArea/DraggableImage";
+import BlessingPeragraph from "../Components/BleesingArea/BlessingPeragraph";
+import { useSelector } from "react-redux";
 
 const CreateScreen: React.FC = () => {
-  const [images, setImages] = useState([]);
-
-  function addImage(image: string): void {
-    setImages([...images, image]);
-  }
+  const images = useSelector((state) => state.blessingSettings.images);
 
   return (
     <div className={"BlessingLocation"}>
-      <SettingsToolBar
-        addImage={(clickEvent, image) => {
-          addImage(image);
-        }}
-      />
-      {images ? images.map((image) => <DraggableImage src={image} />) : null}
+      <SettingsToolBar />
+      {images
+        ? Object.keys(images).map((item) => (
+            <DraggableImage
+              data={images[item].imageSrc}
+              imageID={item}
+              key={item}
+            /> // container for a draggable image each images[item] is an image with its settings
+          ))
+        : null}
+      <BlessingPeragraph />
     </div>
   );
 };

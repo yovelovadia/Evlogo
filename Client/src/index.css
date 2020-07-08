@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow: auto;
 }
 
 /* overAll classes */
@@ -24,8 +25,9 @@ body {
 
 .toolBar {
   position: fixed;
-  height: 100vh;
-  width: 30vw;
+  height: 100%;
+  width: 30%;
+  top: 0;
   right: 0;
   border-left: 1px solid rgba(58, 58, 58, 0.411);
   display: flex;
@@ -34,7 +36,8 @@ body {
 }
 
 .backgroudCarousel {
-  width: 80%;
+  width: 90%;
+  height: 14%;
   text-align: center;
   border: 2px solid rgba(94, 94, 94, 0.301);
   padding: 10px;
@@ -46,17 +49,22 @@ body {
 }
 
 .imagesOnCarouselContainer {
-  height: 150px;
-  width: 150px;
-  border: 1px solid black;
+  height: 60%;
 }
 
 .imagesOnCarousel {
-  width: 80%;
-  height: 80%;
+  width: 70%;
+  height: 70%;
+  padding: 3px;
+  border: 1px solid black;
+}
+
+.blessingTextArea {
+  padding: 5px;
 }
 
 .imagesOnCarouselContainer:hover > .addStickerButton {
+  /*  show button to add when hovers above image */
   display: block;
 }
 
@@ -66,14 +74,71 @@ body {
 
 /* blessingZone */
 
+.BlessingLocation {
+  background: linear-gradient(90deg, rgb(247, 134, 134), rgb(97, 238, 231));
+  width: 70%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+}
+
+.blessingPeragraph {
+  white-space: pre-wrap;
+  text-align: center;
+}
+
+/*  drabble image settings   */
+
+.draggableImageContainer {
+  position: absolute;
+  border: 2px solid transparent;
+  transform: translate(-50%, -50%);
+}
+
 .draggableImage {
-  width: 100px;
+  height: 100px;
+  padding: 5px;
+}
+
+.draggableImageContainer:hover {
+  border: 2px solid aliceblue;
+}
+
+.draggableImageContainer:hover > .draggableImageDeleteIcon {
+  display: block;
+}
+
+.draggableImageDeleteIcon {
+  top: 60%;
+  left: -5%;
+  position: absolute;
+  display: none;
+  cursor: pointer;
+  font-size: 40px;
+  background-color: transparent;
+  border: transparent;
+  font-weight: bold;
+}
+
+/* /////////////////////////////////////////   */
+
+/* preview screen */
+.previewContainer {
+  background: linear-gradient(90deg, rgb(247, 134, 134), rgb(97, 238, 231));
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+.previewImages {
+  position: absolute;
   height: 100px;
 }
 
-.BlessingLocation {
-  position: fixed;
-  background-color: aqua;
-  width: 70%;
-  height: 100%;
+.test {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
 }

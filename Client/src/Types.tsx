@@ -1,7 +1,17 @@
 export interface Props {
-  addImage?: (
-    event: React.MouseEvent<HTMLInputElement, MouseEvent>,
-    image: string
-  ) => void;
-  src?: string;
+  imageSrc?: string;
+  data?: any;
+  imageID?: string;
+}
+
+export interface screenDimensions {
+  screenHeight: number;
+  screenWidth: number;
+}
+
+export interface Cordinates {
+  imageID?: string;
+  xPosition: number;
+  yPosition: number;
+  windowDimension?: screenDimensions;
 }

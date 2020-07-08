@@ -14,7 +14,7 @@ app.use(express.json());
 
 const uri = process.env.MONGODB_URI;
 
-mongoose.connect(uri || "mongodb://localhost/BirthdayMaker", {
+mongoose.connect(uri || "mongodb://localhost/api", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -23,8 +23,8 @@ mongoose.connect(uri || "mongodb://localhost/BirthdayMaker", {
 const connection = mongoose.connection;
 
 //Import routes
-const defaultAssets = require("./Routes/defaultAssets");
-app.use("/defaultAssets", defaultAssets);
+const Assets = require("./Routes/Assets");
+app.use("/Assets", Assets);
 
 ////////////////////////////////////////////////////////////////////////
 
