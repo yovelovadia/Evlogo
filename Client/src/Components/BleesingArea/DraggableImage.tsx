@@ -11,9 +11,8 @@ const DraggableImage: React.FC<Props> = (props) => {
     (state) => state.blessingSettings.images[props.imageID]
   );
 
-  const storeCordinatesRedux = (data) => {
+  const storeCordinatesRedux = <T extends any>(data: T): void => {
     const windowDimension = getWindowDimensions();
-
     let xPosition: number = (data.x * 100) / windowDimension.screenWidth; // taking data turning it to precentage
     let yPosition: number = (data.y * 100) / windowDimension.screenHeight;
 

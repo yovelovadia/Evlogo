@@ -64,7 +64,6 @@ body {
 }
 
 .imagesOnCarouselContainer:hover > .addStickerButton {
-  /*  show button to add when hovers above image */
   display: block;
 }
 
