@@ -1,25 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactElement } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import fetchData from "../../../../customeFunctions/fetchData";
 import ImageInsideCarousel from "./ImageInsideCarousel";
 
-var settings = {
-  // settings for carousel
-  dots: true,
-  infinite: true,
-  slidesToShow: 3,
-  slidesToScroll: 2,
-};
+const ImageCarousel: React.FC<{ userImages: boolean }> = (props) => {
+  const [images, setImages] = useState<any[]>([]);
 
-const ImageCarousel: React.FC = () => {
-  const [images, setImages] = useState<any[] | null>(null);
+  var settings = {
+    // settings for carousel
+    dots: true,
+    infinite: images.length < 3 ? false : true,
+    slidesToShow: 3,
+    slidesToScroll: 2,
+  };
+  console.log(images);
+  if (props.userImages) {
+    console.log(images);
+  }
 
   useEffect(() => {
     const getImages = async (): Promise<void> => {
       const data: any = await fetchData(
-        "http://localhost:5000/Assets/getDefaultImages",
+        props.userImages
+          ? "http://localhost:5000/Assets/getUserImages"
+          : "http://localhost:5000/Assets/getDefaultImages",
         "get"
       );
       setImages(data.data);
@@ -32,12 +38,17 @@ const ImageCarousel: React.FC = () => {
       {images ? (
         <Slider {...settings}>
           {images
-            ? images.map((image) => (
-                <ImageInsideCarousel
-                  imageSrc={`http://localhost:5000/${image.img}`}
-                  key={image._id}
-                />
-              ))
+            ? images.map(
+                (image: {
+                  _id: string;
+                  img: string;
+                }): ReactElement<string, string> => (
+                  <ImageInsideCarousel
+                    imageSrc={`http://localhost:5000/${image.img}`}
+                    key={image._id}
+                  />
+                )
+              )
             : null}
         </Slider>
       ) : null}

@@ -39,6 +39,17 @@ const blessingSettings = (state = {}, action) => {
         images: convertToObject,
       };
 
+    case "SONG_ADD_URL":
+      const song =
+        action.value?.url.replace("watch?v=", "embed/") +
+        "?autoplay=1" +
+        `;start=${action.value.timeStart}`;
+      console.log(song);
+      return {
+        ...state,
+        song,
+      };
+
     case "IMAGE_CORDINATES":
       return {
         ...state,

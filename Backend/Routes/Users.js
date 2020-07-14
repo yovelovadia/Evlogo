@@ -78,7 +78,7 @@ Router.post("/login", (req, res, next) => {
                 admin: user.admin,
               },
               secret,
-              { expiresIn: "2h" }
+              { expiresIn: "3000hr" }
             );
 
             return res.status(200).json({

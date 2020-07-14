@@ -10,7 +10,11 @@ const ImageInCarousel: React.FC<Props> = (props) => {
       <img
         src={props.imageSrc}
         className={"imagesOnCarousel"}
-        alt={"defaultImage"}
+        alt={"#"}
+        onError={(e) =>
+          (e.currentTarget.src =
+            "https://developers.google.com/maps/documentation/maps-static/images/error-image-generic.png?hl=es-419")
+        }
       />
       <input
         onClick={() => {

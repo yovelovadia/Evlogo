@@ -4,13 +4,17 @@ import Typist from "react-typist";
 
 const PreviewScreen: React.FC = () => {
   const images: any[] = useSelector((state) => state.blessingSettings.images);
-  const peragraph: string = useSelector(
-    (state: { blessingSettings: { peragraph: string } }) =>
-      state.blessingSettings.peragraph
-  );
+  const data: any = useSelector((state) => state.blessingSettings);
 
   return (
     <div className={"previewContainer"}>
+      <iframe
+        width={"0"}
+        height={"0"}
+        src={data.song}
+        frameBorder={"0"}
+        allow={"autoplay"}
+      ></iframe>
       {Object.keys(images).map((item) => (
         <img
           draggable={false}
@@ -24,7 +28,7 @@ const PreviewScreen: React.FC = () => {
         />
       ))}
       <Typist>
-        <p className={"blessingPeragraph"}>{peragraph}</p>
+        <p className={"blessingPeragraph"}>{data.peragraph}</p>
       </Typist>
     </div>
   );

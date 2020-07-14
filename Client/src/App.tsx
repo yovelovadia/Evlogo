@@ -7,7 +7,9 @@ import SignUpScreen from "./Screens/SignUpScreen";
 import LoginScreen from "./Screens/LoginScreen";
 
 function App() {
-  // const history = createBrowserHistory();
+  const history = createBrowserHistory();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
   return (
     <Router>
       <Switch>

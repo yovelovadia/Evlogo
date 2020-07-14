@@ -18,6 +18,7 @@ const UploadImage: React.FC = () => {
   return (
     <div>
       <input
+        style={{ margin: "40px" }}
         onChange={upload}
         type={"file"}
         name={"image"}
