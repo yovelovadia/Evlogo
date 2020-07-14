@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import SettingsToolBar from "../Components/SettingsToolBar/SettingsToolBar";
-import DraggableImage from "../Components/BleesingArea/DraggableImage";
-import BlessingPeragraph from "../Components/BleesingArea/BlessingPeragraph";
+import SettingsToolBar from "../Components/Create/SettingsToolBar/SettingsToolBar";
+import DraggableImage from "../Components/Create/BleesingArea/DraggableImage";
+import BlessingPeragraph from "../Components/Create/BleesingArea/BlessingPeragraph";
 import { useSelector } from "react-redux";
 
 const CreateScreen: React.FC = () => {

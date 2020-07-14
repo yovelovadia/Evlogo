@@ -5,7 +5,8 @@ import Typist from "react-typist";
 const PreviewScreen: React.FC = () => {
   const images: any[] = useSelector((state) => state.blessingSettings.images);
   const peragraph: string = useSelector(
-    (state) => state.blessingSettings.peragraph
+    (state: { blessingSettings: { peragraph: string } }) =>
+      state.blessingSettings.peragraph
   );
 
   return (

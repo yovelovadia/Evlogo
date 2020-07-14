@@ -24,7 +24,10 @@ const connection = mongoose.connection;
 
 //Import routes
 const Assets = require("./Routes/Assets");
-app.use("/Assets", Assets);
+app.use("/assets", Assets);
+
+const Users = require("./Routes/Users");
+app.use("/users", Users);
 
 ////////////////////////////////////////////////////////////////////////
 

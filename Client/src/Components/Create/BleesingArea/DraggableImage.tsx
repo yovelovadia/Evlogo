@@ -1,20 +1,21 @@
 import React from "react";
 import { DraggableCore } from "react-draggable";
-import { Props } from "../../Types";
+import { Props } from "../../../Types";
 import { useSelector, useDispatch } from "react-redux";
-import { Cordinates } from "../../Types";
-import getWindowDimensions from "../../customeFunctions/getWindowDimensions";
+import { Cordinates } from "../../../Types";
+import getWindowDimensions from "../../../customeFunctions/getWindowDimensions";
 
 const DraggableImage: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
   const imageSettings = useSelector(
-    (state) => state.blessingSettings.images[props.imageID]
+    (state: { blessingSettings: { images: { [x: string]: any } } }) =>
+      state.blessingSettings.images[props.imageID]
   );
 
-  const storeCordinatesRedux = <T extends any>(data: T): void => {
+  const storeCordinatesRedux = (x: number, y: number): void => {
     const windowDimension = getWindowDimensions();
-    let xPosition: number = (data.x * 100) / windowDimension.screenWidth; // taking data turning it to precentage
-    let yPosition: number = (data.y * 100) / windowDimension.screenHeight;
+    let xPosition: number = (x * 100) / windowDimension.screenWidth; // taking data turning it to precentage
+    let yPosition: number = (y * 100) / windowDimension.screenHeight;
 
     dispatch<Cordinates>({
       type: "IMAGE_CORDINATES",
@@ -28,7 +29,10 @@ const DraggableImage: React.FC<Props> = (props) => {
   };
 
   return (
-    <DraggableCore handle={".handle"} onDrag={storeCordinatesRedux}>
+    <DraggableCore
+      handle={".handle"}
+      onDrag={(data) => storeCordinatesRedux(data["x"], data["y"])}
+    >
       <div
         className={"handle draggableImageContainer"}
         style={{

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Props } from "../../../Types";
+import { Props } from "../../../../Types";
 import { useDispatch } from "react-redux";
 
 const ImageInCarousel: React.FC<Props> = (props) => {

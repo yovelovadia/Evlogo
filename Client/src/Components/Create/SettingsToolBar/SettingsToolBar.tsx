@@ -1,6 +1,7 @@
 import React from "react";
 import ImageCarousel from "./Carousels/ImageCarousel";
 import BlessingTextArea from "./BlessingTextArea";
+import UploadImage from "./UploadImage";
 import { Link } from "react-router-dom";
 
 // the settings bar container
@@ -10,6 +11,7 @@ const SettingsToolBar: React.FC = () => {
     <div className={"toolBar"}>
       <h3 className={"toolsHeaders"}>images/stickers</h3>
       <ImageCarousel />
+      <UploadImage />
       <BlessingTextArea />
 
       <Link to={"preview"}>

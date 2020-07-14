@@ -15,3 +15,17 @@ export interface Cordinates {
   yPosition: number;
   windowDimension?: screenDimensions;
 }
+
+export interface UserInfo {
+  email: string;
+  password: string;
+  name?: string;
+  admin?: boolean;
+}
+
+export interface TextInputProps {
+  name: string;
+  placeholder: string;
+  handleChange: (action: string, data?: string) => void;
+  type?: string;
+}
