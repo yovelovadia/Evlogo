@@ -2,10 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./style/activity.css";
 import "./style/home.css";
+import "./style/canvas.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { createStore, compose } from "redux";
 import combineReducers from "./redux/reducers/combineReducers";
+import "./style/fonts.css";
 import { Provider } from "react-redux";
 
 declare global {

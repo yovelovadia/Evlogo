@@ -4,21 +4,21 @@ import { useDispatch } from "react-redux";
 
 const ImageInCarousel: React.FC<Props> = (props) => {
   const dispatch: any = useDispatch();
+  const [src, setSrc] = useState<string>(props.src);
 
   return (
     <div className={"imagesOnCarouselContainer "}>
       <img
-        src={props.imageSrc}
+        src={src}
         className={"imagesOnCarousel"}
-        alt={"#"}
-        onError={(e) =>
-          (e.currentTarget.src =
-            "https://developers.google.com/maps/documentation/maps-static/images/error-image-generic.png?hl=es-419")
-        }
+        alt={"Image not found"}
+        onError={() => {
+          setSrc(`http://localhost:5000/${src}`);
+        }}
       />
       <input
         onClick={() => {
-          dispatch({ type: "IMAGE_ADD", value: props.imageSrc }); // adding new image to redux...
+          dispatch({ type: "IMAGE_ADD", value: src }); // adding new image to redux...
         }}
         type={"button"}
         value={"Add"}

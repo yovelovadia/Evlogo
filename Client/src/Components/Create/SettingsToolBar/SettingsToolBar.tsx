@@ -1,30 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import ImageCarousel from "./Carousels/ImageCarousel";
-import BlessingTextArea from "./BlessingTextArea";
+import PeragraphTextArea from "./peragraphTextArea/PeragraphTextArea";
 import UploadImage from "./UploadImage";
 import SongPick from "./SongPick";
 import Header from "./Header";
-import { Link } from "react-router-dom";
+import Background from "./Background";
+import { FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
 
 // the settings bar container
 
 const SettingsToolBar: React.FC = () => {
-  return (
-    <div className={"toolBar"}>
-      <Header />
-      <ImageCarousel userImages={false} />
-      <ImageCarousel userImages={true} />
-      <UploadImage />
-      <BlessingTextArea />
-      <SongPick />
+  const [refresh, setRefresh] = useState<boolean>(true);
+  const [minimize, setMinimize] = useState<boolean>(false);
 
-      <Link to={"preview"}>
-        <h1>Click me to for preview</h1>
-      </Link>
-      <h1 style={{ marginBottom: "1000px" }}>test</h1>
-      <h1 id={"okey"}>nigger</h1>
-      {/* <h3 className={"toolsHeaders"}>Pick stickers/images</h3>
-      <BackGroundCarousel /> */}
+  return (
+    <div className={"toolBar"} style={{ width: minimize ? "5px" : "30%" }}>
+      <Header />
+      <div id={"background"} className={"sectionContainer"}>
+        <h1 className={"sectionContainerHeader"}>
+          <span>Background</span>
+        </h1>
+        <Background />
+      </div>
+
+      <div id={"text"} className={"sectionContainer"}>
+        <h1 className={"sectionContainerHeader"}>
+          <span>Text</span>
+        </h1>
+        <PeragraphTextArea />
+      </div>
+      <div id={"images"} className={"sectionContainer"}>
+        <h1 className={"sectionContainerHeader"}>
+          <span>Stickers/Images</span>
+        </h1>
+        <h2>Stickers</h2>
+        <ImageCarousel refresh={refresh} userImages={false} />
+        <h2>Your images</h2>
+        <ImageCarousel refresh={refresh} userImages={true} />
+        <UploadImage refresh={() => setRefresh(!refresh)} />
+      </div>
+      <div id={"song"} className={"sectionContainer"}>
+        <h1 className={"sectionContainerHeader"}>
+          <span>Song</span>
+        </h1>
+        <SongPick />
+      </div>
+
+      <div
+        onClick={() => {
+          setMinimize(!minimize);
+        }}
+        className={"minimizeToolBar"}
+        style={{ right: minimize ? "10px" : null }}
+      >
+        {minimize ? (
+          <FiChevronsLeft size={35} />
+        ) : (
+          <FiChevronsRight size={35} />
+        )}
+      </div>
     </div>
   );
 };

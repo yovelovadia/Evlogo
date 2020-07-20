@@ -5,7 +5,9 @@ import "slick-carousel/slick/slick-theme.css";
 import fetchData from "../../../../customeFunctions/fetchData";
 import ImageInsideCarousel from "./ImageInsideCarousel";
 
-const ImageCarousel: React.FC<{ userImages: boolean }> = (props) => {
+const ImageCarousel: React.FC<{ userImages: boolean; refresh: boolean }> = (
+  props
+) => {
   const [images, setImages] = useState<any[]>([]);
 
   var settings = {
@@ -15,10 +17,6 @@ const ImageCarousel: React.FC<{ userImages: boolean }> = (props) => {
     slidesToShow: 3,
     slidesToScroll: 2,
   };
-  console.log(images);
-  if (props.userImages) {
-    console.log(images);
-  }
 
   useEffect(() => {
     const getImages = async (): Promise<void> => {
@@ -31,7 +29,7 @@ const ImageCarousel: React.FC<{ userImages: boolean }> = (props) => {
       setImages(data.data);
     };
     getImages();
-  }, []);
+  }, [props.refresh]);
 
   return (
     <div className={"backgroudCarousel grab"}>
@@ -43,10 +41,7 @@ const ImageCarousel: React.FC<{ userImages: boolean }> = (props) => {
                   _id: string;
                   img: string;
                 }): ReactElement<string, string> => (
-                  <ImageInsideCarousel
-                    imageSrc={`http://localhost:5000/${image.img}`}
-                    key={image._id}
-                  />
+                  <ImageInsideCarousel src={image.img} key={image._id} />
                 )
               )
             : null}

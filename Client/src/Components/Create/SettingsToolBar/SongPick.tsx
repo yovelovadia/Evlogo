@@ -27,6 +27,7 @@ const SongPick = () => {
       />
 
       <input
+        className={"submitButton"}
         type={"button"}
         value={"submit"}
         onClick={() => dispatch({ type: "SONG_ADD_URL", value: song })}

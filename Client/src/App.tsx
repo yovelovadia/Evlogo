@@ -1,13 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { createBrowserHistory } from "history";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import { createBrowserHistory } from "history";
 import CreateScreen from "./Screens/CreateScreen";
 import PreviewScreen from "./Screens/PreviewScreen";
 import SignUpScreen from "./Screens/SignUpScreen";
 import LoginScreen from "./Screens/LoginScreen";
 
 function App() {
-  const history = createBrowserHistory();
+  // const history = createBrowserHistory();
   window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (

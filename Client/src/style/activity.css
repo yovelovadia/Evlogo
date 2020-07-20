@@ -1,3 +1,8 @@
+:root {
+  --main-red-color: #f55757;
+  --main-lighter-black: rgb(54, 54, 54);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -6,12 +11,37 @@ body {
   margin: 0;
   padding: 0;
   overflow: auto;
-}
-
-.pageContainer {
+  font-family: sans-serif;
 }
 
 /* overAll classes */
+
+input[type="button"] {
+  outline: none;
+}
+
+.submitButton {
+  border: none;
+  background: var(--main-lighter-black);
+  color: white;
+  font-weight: 100;
+  padding: 14px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+.submitButton:hover {
+  background-color: var(--main-red-color);
+
+  font-weight: 700;
+  letter-spacing: 3px;
+  box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  transition: all 0.3s ease 0s;
+}
 
 .grab {
   cursor: move;
@@ -26,6 +56,19 @@ body {
   cursor: -webkit-grabbing;
 }
 
+a {
+  text-decoration: none;
+}
+
+.colorPicker {
+  width: 35px;
+  height: 35px;
+  border: none;
+  outline: none;
+  background-color: white;
+  padding: 0;
+}
+
 /* BleesingMaker toolbar */
 
 .toolBar {
@@ -33,37 +76,121 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   height: 100%;
-  width: 30%;
-  top: 0;
   right: 0;
-  border-left: 1px solid rgba(58, 58, 58, 0.411);
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  box-shadow: 1px 0px 15px 2px rgb(0, 0, 0);
+  background-color: white;
+  opacity: 0.9;
+}
+
+.ToolsHeadersContainer {
+  position: sticky;
+  top: 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-self: center;
+  background-color: white;
+  margin: 20px 0;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.minimizeToolBar {
+  position: fixed;
+  top: 50%;
+  transform: translate(0, -50%);
+  cursor: pointer;
+}
+
+.headerIcons {
+  opacity: 0.8;
+}
+
+.headerIcons:hover {
+  opacity: 1;
+}
+
+.headerIcons:hover > .headerIconsBubble {
+  display: block;
+}
+
+.headerIconsBubble {
+  position: absolute;
+  background-color: var(--main-red-color);
+  border-radius: 0.4em;
+  color: white;
+  padding: 10px;
+  transform: translate(-30px, 10px);
+  display: none;
+}
+
+.headerIconsBubble:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 12px solid transparent;
+  border-bottom-color: var(--main-red-color);
+  border-top: 0;
+  margin-top: -10px;
+}
+
+.sectionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.sectionContainerHeader {
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid black;
+  line-height: 0.1em;
+  margin: 100px 0;
+  font-family: "Indie Flower";
+}
+
+.sectionContainerHeader span {
+  background: white;
+  padding: 0 10px;
+}
+
+.backgroudCarousel {
+  width: 80%;
+  text-align: center;
+  height: 14vh;
+  margin-bottom: 100px;
+  padding: 30px 0;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+}
+
+/* images/stickers */
+
+.slick-prev:before,
+.slick-next:before {
+  opacity: 1;
+  color: black !important;
+}
+
+.imagesOnCarouselContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.backgroudCarousel {
-  width: 90%;
-  height: 14%;
-  text-align: center;
-  border: 2px solid rgba(94, 94, 94, 0.301);
-  padding: 10px;
-}
-
-.slick-arrow {
-  background-color: rgb(124, 124, 124) !important ;
-  opacity: 0.3;
-}
-
-.imagesOnCarouselContainer {
-  height: 60%;
-}
-
 .imagesOnCarousel {
-  width: 70%;
-  height: 70%;
-  padding: 3px;
-  border: 1px solid black;
+  width: 95%;
+  max-height: 15vh;
+  box-shadow: 2px 2px 4px black;
 }
 
 .blessingTextArea {
@@ -71,77 +198,125 @@ body {
 }
 
 .imagesOnCarouselContainer:hover > .addStickerButton {
-  display: block;
+  opacity: 1;
 }
 
 .addStickerButton {
-  display: none;
+  width: 95%;
+  opacity: 0;
+  background-color: var(--main-red-color);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  height: 20px;
 }
 
-/* blessingZone */
-
-.BlessingLocation {
-  background: linear-gradient(90deg, rgb(247, 134, 134), rgb(97, 238, 231));
-  width: 70%;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  position: fixed;
+.addStickerButton:active {
+  box-shadow: inset 1px 1px 5px var(--main-lighter-black);
 }
 
-.blessingPeragraph {
-  white-space: pre-wrap;
-  text-align: center;
+/* peragraph text writing */
+
+.peragraphToolBarContainer {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
 }
 
-/*  drabble image settings   */
+.textAlignContainer {
+  display: flex;
+}
 
-.draggableImageContainer {
+.textAlignRadio {
   position: absolute;
-  border: 2px solid transparent;
-  transform: translate(-50%, -50%);
+  height: 20px;
+  width: 20px;
+  background-color: aqua;
+  opacity: 0;
+  z-index: 1;
 }
 
-.draggableImage {
-  height: 100px;
-  padding: 5px;
+.fontSizeInput {
+  width: 40px;
+  height: 20px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
 }
 
-.draggableImageContainer:hover {
-  border: 2px solid aliceblue;
-}
-
-.draggableImageContainer:hover > .draggableImageDeleteIcon {
-  display: block;
-}
-
-.draggableImageDeleteIcon {
-  top: 60%;
-  left: -5%;
-  position: absolute;
-  display: none;
-  cursor: pointer;
-  font-size: 40px;
-  background-color: transparent;
-  border: transparent;
-  font-weight: bold;
-}
+/* Canvas */
 
 /* preview screen */
-.previewContainer {
-  background: linear-gradient(90deg, rgb(247, 134, 134), rgb(97, 238, 231));
+.previewBackground {
   position: fixed;
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
-
 .previewImages {
   position: absolute;
-  height: 100px;
 }
 
-.test {
+/* preview button */
+
+.headerPreviewButton {
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: black;
+  border: 2px solid black;
+  letter-spacing: 2px;
+  text-align: center;
   position: sticky;
-  position: -webkit-sticky;
+  transition: all 0.35s;
+  border-radius: 10px;
+}
+
+.headerPreviewButton span {
+  position: relative;
+  z-index: 2;
+}
+
+.headerPreviewButton:after {
+  position: absolute;
+  content: "";
   top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--main-red-color);
+  border-radius: 8px;
+  transition: all 0.35s;
+}
+
+.headerPreviewButton:hover {
+  color: white;
+}
+
+.headerPreviewButton:hover:after {
+  width: 100%;
+}
+
+/* scrollbars  */
+.toolBar::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+.toolBar::-webkit-scrollbar-thumb {
+  background-color: var(--main-lighter-black);
+  border-radius: 10px;
+}
+
+.blessingTextArea::-webkit-scrollbar {
+  width: 0.8em;
+}
+
+.blessingTextArea::-webkit-scrollbar-thumb {
+  background-color: var(--main-lighter-black);
 }
