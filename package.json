@@ -3,7 +3,22 @@
   "version": "1.0.0",
   "description": "A website for creating custome blessings",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "imagemin": "^7.0.1",
+    "imagemin-mozjpeg": "^9.0.0",
+    "is-jpg": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.21",
+    "mozjpeg": "^7.0.0",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.4",
+    "sharp": "^0.25.4"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
