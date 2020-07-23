@@ -1,17 +1,131 @@
-.body {
+:root {
+  --light-blue: rgb(125, 205, 252);
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.body,
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 0;
   padding: 0;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 
-.background {
-  position: fixed;
+/* global elements */
+.logo {
+  color: white;
+  letter-spacing: 4px;
+  margin-left: 15px;
+  font-size: 40px;
+  font-family: Farsan;
+}
+
+/* starter */
+.homeImage {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(90deg, rgb(177, 153, 194), rgb(195, 195, 224));
+  z-index: -1;
+  background-image: url("../Assets/homeImage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* header */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  width: 25%;
+  align-items: baseline;
+  justify-content: space-around;
+  color: white;
+  font-family: Saira Condensed;
+  list-style: none;
+}
+
+.homeAnimatedButton {
+  /* used with coolAnimatedButton found in activity  styles */
+  border: 1px solid white;
+  color: white;
+  font-family: Saira Condensed;
+}
+
+.homeAnimatedButton:after {
+  color: black;
+  background: rgb(241, 241, 241);
+}
+
+.homeAnimatedButton:hover {
+  color: rgb(0, 0, 0);
+}
+
+.homeLoginButton {
+  color: white;
+  font-size: 1.4em;
+}
+
+/* title */
+.titleContainer {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+}
+
+.title {
+  color: white;
+  font-size: 8em;
+  font-family: Farsan;
+}
+
+.subTitle {
+  color: rgb(255, 255, 255);
+  font-family: Saira Condensed;
+  font-size: 3em;
+}
+
+/* about and such */
+.title2 {
+  text-align: center;
+  font-size: 3em;
+  padding: 70px 0;
+}
+
+.iconsContainer {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin-bottom: 100vh;
+  text-align: center;
+}
+
+.iconHeader {
+  font-size: 26px;
+  padding: 14px 0;
+}
+
+.iconPeragraph {
+  font-size: 20px;
 }
 
 /*signup and login screens*/
-
 .signupLoginContainer {
   width: 100vw;
   height: 100vh;
@@ -21,9 +135,58 @@
   align-items: center;
 }
 
+.form {
+  display: flex;
+}
+
+.separatorLine {
+  height: 80%;
+  width: 2px;
+  opacity: 0.7;
+  align-self: center;
+  color: black;
+  background-color: black;
+  margin: 0 50px;
+}
+
 .inputsContainer {
   display: flex;
   flex-direction: column;
+}
+
+.loginSignupHeader {
+  font-family: Saira Condensed;
+  font-size: 60px;
+}
+
+.loginSignupSubHeader {
+  display: flex;
+  font-size: 20px;
+  padding: 30px 0;
+}
+.loginSignupLink {
+  color: var(--light-blue);
+  margin-left: 5px;
+}
+
+.submitButtonHome:hover {
+  background-color: var(--light-blue);
+}
+
+.loginOtherWay {
+  display: flex;
+  align-items: center;
+}
+
+.submitForm {
+  display: flex;
+  align-items: center;
+}
+
+.messageResponse {
+  padding: 20px 0;
+  font-family: Saira Condensed;
+  white-space: pre-wrap;
 }
 
 /*login/sign inputs*/
@@ -166,7 +329,7 @@
 
 .field {
   --fieldBorderColor: #000000;
-  --fieldBorderColorActive: #fcfcfc;
+  --fieldBorderColorActive: var(--light-blue);
 }
 
 /*loading indicator */
@@ -174,15 +337,15 @@
   display: inline-block;
   position: relative;
   width: 80px;
-  height: 80px;
+  height: 43px;
 }
 .loadingIndicator div {
   position: absolute;
-  top: 33px;
+  top: 15px;
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #fff;
+  background: black;
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 .loadingIndicator div:nth-child(1) {

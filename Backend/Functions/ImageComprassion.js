@@ -13,9 +13,8 @@ const convertToJpg = async (image) => {
 
 const ImageComprassion = async (image) => {
   const compress = await imagemin.buffer(image, {
-    plugins: [convertToJpg, mozjpeg({ quality: 85 })],
+    plugins: [convertToJpg, mozjpeg({ quality: 65 })],
   });
-  console.log(compress);
   return compress;
 };
 

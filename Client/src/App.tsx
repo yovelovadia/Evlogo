@@ -5,6 +5,8 @@ import CreateScreen from "./Screens/CreateScreen";
 import PreviewScreen from "./Screens/PreviewScreen";
 import SignUpScreen from "./Screens/SignUpScreen";
 import LoginScreen from "./Screens/LoginScreen";
+import File from "./Screens/File";
+import HomeScreen from "./Screens/HomeScreen";
 
 function App() {
   // const history = createBrowserHistory();
@@ -13,10 +15,12 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={CreateScreen} />
+        <Route path="/" exact component={HomeScreen} />
+        <Route path="/create" component={CreateScreen} />
         <Route path="/preview" component={PreviewScreen} />
         <Route path="/signup" component={SignUpScreen} />
         <Route path="/login" component={LoginScreen} />
+        <Route path="/file/:_id" component={File} />
       </Switch>
     </Router>
   );

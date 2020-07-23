@@ -18,6 +18,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-draggable": "^4.4.3",
+    "react-google-login": "^5.1.21",
     "react-icons": "^3.10.0",
     "react-konva": "^16.13.0-3",
     "react-redux": "^7.2.0",

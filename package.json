@@ -1,0 +1,26 @@
+{
+  "name": "evlogo",
+  "version": "1.0.0",
+  "description": "A website for creating custome blessings",
+  "main": "index.js",
+  "dependencies": {
+    "imagemin": "^7.0.1",
+    "react-scroll": "^1.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd Backend && node server.js",
+    "heroku-postbuild": "cd Client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yovelovadia/birthdayMaker.git"
+  },
+  "author": "Yovel Ovadia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yovelovadia/birthdayMaker/issues"
+  },
+  "homepage": "https://github.com/yovelovadia/birthdayMaker#readme"
+}

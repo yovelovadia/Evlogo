@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImageCarousel from "./Carousels/ImageCarousel";
 import PeragraphTextArea from "./peragraphTextArea/PeragraphTextArea";
 import UploadImage from "./UploadImage";
 import SongPick from "./SongPick";
 import Header from "./Header";
 import Background from "./Background";
+import Finished from "./Finished";
 import { FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
 
 // the settings bar container
@@ -14,7 +15,7 @@ const SettingsToolBar: React.FC = () => {
   const [minimize, setMinimize] = useState<boolean>(false);
 
   return (
-    <div className={"toolBar"} style={{ width: minimize ? "5px" : "30%" }}>
+    <div className={"toolBar"} style={{ width: minimize ? "0px" : "30%" }}>
       <Header />
       <div id={"background"} className={"sectionContainer"}>
         <h1 className={"sectionContainerHeader"}>
@@ -59,6 +60,7 @@ const SettingsToolBar: React.FC = () => {
           <FiChevronsRight size={35} />
         )}
       </div>
+      <Finished />
     </div>
   );
 };

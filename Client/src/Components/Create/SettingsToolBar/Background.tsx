@@ -8,27 +8,32 @@ const Background: React.FC = () => {
     (state) => state.canvas.background
   );
 
-  const changeColor = (data: any, picked: string): void => {
-    const value: { color: string; picked: string } = {
-      color: data.target.value,
-      picked,
-    };
-    dispatch({ type: "BACKGROUND_CHANGE", value });
+  const changeBgAtt = (bgKey: string, bgValue: string | number): void => {
+    dispatch({ type: "BACKGROUND_CHANGE_ATT", value: { bgKey, bgValue } });
   };
 
   return (
-    <div>
+    <div id={"background"}>
       <input
-        onChange={(data) => changeColor(data, "color1")}
+        onChange={(data) => changeBgAtt("color1", data.target.value)}
         type={"color"}
         className={"colorPicker"}
         value={background.color1}
       />
       <input
-        onChange={(data) => changeColor(data, "color2")}
+        onChange={(data) => changeBgAtt("color2", data.target.value)}
         type={"color"}
         className={"colorPicker"}
         value={background.color2}
+      />
+      <h3>{background.degree}&#xb0;</h3>
+      <input
+        type={"range"}
+        className={"slider"}
+        min={0}
+        max={360}
+        value={background.degree}
+        onChange={(data) => changeBgAtt("degree", data.target.value)}
       />
     </div>
   );

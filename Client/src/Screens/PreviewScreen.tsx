@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Typist from "react-typist";
 import { ImageType, CanvasTypes, BackgroundType, Peragraph } from "../Types";
+import fadeInAnimation from "../customeFunctions/fadeInAnimation";
+import { Link } from "react-router-dom";
 
 const PreviewScreen: React.FC = () => {
   const data: CanvasTypes = useSelector((state) => state.canvas);
@@ -9,15 +11,48 @@ const PreviewScreen: React.FC = () => {
   const background: BackgroundType = data.background;
   const peragraph: Peragraph = data.peragraph;
 
+  useEffect(() => {
+    fadeInAnimation();
+  }, []);
+
   return (
     <div
       className={"previewBackground"}
       style={{
-        background: `linear-gradient(45deg,${background.color1},${
-          background.color2 ? background.color2 : background.color1
-        })`,
+        background: `linear-gradient(${background.degree}deg,${
+          background.color1
+        },${background.color2 ? background.color2 : background.color1})`,
       }}
     >
+      <Link to={"/create"}>
+        <div
+          style={{ position: "fixed", zIndex: 1 }}
+          className={"coolAnimatedButton"}
+        >
+          <span>Back</span>
+        </div>
+      </Link>
+
+      {/* peragraph */}
+      <Typist>
+        <p
+          style={{
+            position: "absolute",
+            whiteSpace: "pre-wrap",
+            fontFamily: `${peragraph.fontFamily}` || "sans-serif",
+            fontSize: `${peragraph.fontSize || 30}px`,
+            top: `${((peragraph.y + 18) * 100) / window.screen.height}%`, // plus 18 because of typist height is taking 18px so im doing the correction
+            left: `${(peragraph.x * 100) / window.screen.width}%`,
+            textAlign: peragraph.textAlign as CanvasTextAlign,
+            color: peragraph.color,
+            margin: "0",
+            lineHeight: "1",
+          }}
+        >
+          {peragraph.text}
+        </p>
+      </Typist>
+
       {/* song in background */}
       <iframe
         width={"0"}
@@ -29,41 +64,26 @@ const PreviewScreen: React.FC = () => {
       ></iframe>
       {/* all the images/stickers */}
       {Object.keys(images).map((item) => {
-        const x: number = (images[item].x * 100) / window.outerWidth;
-        const y: number = (images[item].y * 100) / window.outerHeight;
+        const x: number = (images[item].x * 100) / window.screen.width;
+        const y: number = (images[item].y * 100) / window.innerHeight;
         const rotation: number = images[item].rotation;
-        const scaleX: number = images[item].scaleX;
+        const precentageWidth: number = images[item].precentageWidth;
         return (
           <img
             draggable={false}
             alt={"somthing"}
             key={item}
             src={images[item].src}
+            className={"fadeIn image"}
             style={{
-              transform: `scale(${scaleX}) rotate(${rotation}deg)`,
-              position: "absolute",
+              width: `${precentageWidth}%`,
+              transform: `rotate(${rotation}deg)`,
               left: `${x}%`,
               top: `${y}%`,
-              transformOrigin: "top left",
             }}
           />
         );
       })}
-      {/* peragraph */}
-      <Typist>
-        <p
-          style={{
-            position: "absolute",
-            whiteSpace: "pre-wrap",
-            fontSize: `${peragraph.fontSize || 30}px`,
-            top: `${(peragraph.y * 100) / window.outerHeight}%`,
-            left: `${(peragraph.x * 100) / window.outerWidth}%`,
-            textAlign: peragraph.textAlign as CanvasTextAlign,
-          }}
-        >
-          {peragraph.text}
-        </p>
-      </Typist>
     </div>
   );
 };

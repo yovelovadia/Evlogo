@@ -4,7 +4,7 @@ import Canvas from "../Components/Create/Canvas/Canvas";
 
 const CreateScreen: React.FC = () => {
   return (
-    <div className={"pageContainer"}>
+    <div className={"pageContainer"} id={"pageContainer"}>
       <SettingsToolBar />
       <Canvas />
     </div>

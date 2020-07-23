@@ -6,6 +6,7 @@ const image_schema = new Schema({
   img: {
     type: String,
     required: true,
+    unique: true,
   },
 });
 

@@ -13,6 +13,7 @@ export interface ImageType {
   rotation?: number;
   scaleX?: number;
   scaleY?: number;
+  precentageWidth?: number;
 }
 
 export interface ImageProps {
@@ -24,6 +25,7 @@ export interface ImageProps {
 
 export interface Peragraph {
   fontSize?: number;
+  lineHeight: number;
   fontFamily?: string;
   fading?: boolean;
   color?: string;
@@ -37,13 +39,13 @@ export interface Peragraph {
 export interface PeragraphProps {
   peragraph: Peragraph;
   dispatch: any;
-  selected: (data: any) => void;
 }
 
 export interface BackgroundType {
   color1?: string;
   color2?: string;
   color3?: string;
+  degree: number;
 }
 
 export interface CanvasTypes {

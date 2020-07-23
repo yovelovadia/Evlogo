@@ -7,29 +7,39 @@ import {
   MdFormatAlignCenter,
 } from "react-icons/md";
 
+const fonts: string[] = [
+  "Ariel",
+  "cursive",
+  "sans-serif",
+  "Amatic SC",
+  "Anton",
+  "Caveat",
+  "Chewy",
+  "Courgette",
+  "Cousine",
+  "Dancing Script",
+  "Modak",
+  "Permanent Marker",
+  "Ranchers",
+  "Rubik",
+  "Secular One",
+  "Suez One",
+  "Indie Flower",
+  "Farsan",
+  "Saira Condensed",
+];
+
 const PeragraphToolBar: React.FC = () => {
   const dispatch: any = useDispatch();
   const peragraph: Peragraph = useSelector((state) => state.canvas.peragraph);
   const align: string = peragraph.textAlign;
   const fontSize: number = peragraph.fontSize;
   const color: string = peragraph.color;
+  const fontFamily: string = peragraph.fontFamily;
+  const lineHeight: number = peragraph.lineHeight;
 
-  const changeTextAlign = (alignment: string): void => {
-    const value: string = alignment;
-    const key = "textAlign";
-    dispatch({ type: "PERAGRAPH_CHANGE_ATT", value: { value, key } });
-  };
-
-  const changeFontSize = (data: any): void => {
-    const value: string = data.target.value;
-    const key: string = "fontSize";
-    dispatch({ type: "PERAGRAPH_CHANGE_ATT", value: { value, key } });
-  };
-
-  const changeTextColor = (data: any): void => {
-    const value: string = data.target.value;
-    const key: string = "color";
-    dispatch({ type: "PERAGRAPH_CHANGE_ATT", value: { value, key } });
+  const changeAtt = (peraKey: string, peraValue: string | number): void => {
+    dispatch({ type: "PERAGRAPH_CHANGE_ATT", value: { peraValue, peraKey } });
   };
 
   return (
@@ -41,7 +51,7 @@ const PeragraphToolBar: React.FC = () => {
             type={"radio"}
             name={"textAlign"}
             onChange={() => {
-              changeTextAlign("left");
+              changeAtt("textAlign", "left");
             }}
           />
           <MdFormatAlignLeft
@@ -55,7 +65,7 @@ const PeragraphToolBar: React.FC = () => {
             type={"radio"}
             name={"textAlign"}
             onChange={() => {
-              changeTextAlign("center");
+              changeAtt("textAlign", "center");
             }}
             checked={align === "center" ? true : false}
           />
@@ -70,7 +80,7 @@ const PeragraphToolBar: React.FC = () => {
             type={"radio"}
             name={"textAlign"}
             onChange={() => {
-              changeTextAlign("right");
+              changeAtt("textAlign", "right");
             }}
             checked={align === "right" ? true : false}
           />
@@ -86,15 +96,35 @@ const PeragraphToolBar: React.FC = () => {
         min={0}
         max={200}
         value={fontSize}
-        onChange={changeFontSize}
+        onChange={(data) => changeAtt("fontSize", parseInt(data.target.value))}
       />
       <input
         type={"color"}
         className={"colorPicker"}
-        onChange={changeTextColor}
+        onChange={(data) => {
+          changeAtt("color", data.target.value);
+        }}
         value={color}
       />
-      <select></select>
+      <select
+        value={fontFamily}
+        onChange={(data) => changeAtt("fontFamily", data.target.value)}
+      >
+        {fonts.map((font) => (
+          <option key={font} style={{ fontFamily: font }} value={font}>
+            {font}
+          </option>
+        ))}
+      </select>
+      <input
+        value={lineHeight}
+        className={"fontSizeInput"}
+        type={"number"}
+        step={"0.1"}
+        onChange={(data) =>
+          changeAtt("lineHeight", parseFloat(data.target.value))
+        }
+      />
     </div>
   );
 };

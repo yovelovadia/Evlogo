@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import fetchData from "../customeFunctions/fetchData";
 import { UserInfo } from "../Types";
 import TextInput from "../Components/Home/TextInput";
+import GoogleLogin from "react-google-login";
 
 const SignUpScreen: React.FC = () => {
   const history = useHistory();
@@ -14,7 +15,7 @@ const SignUpScreen: React.FC = () => {
     password: "",
     admin: false,
   });
-  const handleChange = (action: string, data: string | boolean): void => {
+  const handleChange = (action: string, data: string): void => {
     setInfo({ ...info, [action]: data });
   };
 
@@ -48,31 +49,42 @@ const SignUpScreen: React.FC = () => {
   return (
     <div className={"background"}>
       <div className={"signupLoginContainer"}>
-        <h1 className={"header"}>Sign up!</h1>
-        <form className={"inputsContainer"}>
-          <TextInput
-            name={"Name"}
-            placeholder={"e.g. Thomas"}
-            handleChange={(data: string | boolean) =>
-              handleChange("name", data)
-            }
-          />
-          <TextInput
-            name={"Email"}
-            placeholder={"e.g. demo@email.com"}
-            handleChange={(data: string | boolean) =>
-              handleChange("email", data)
-            }
-            type={"email"}
-          />
-          <TextInput
-            name={"Password"}
-            placeholder={"password"}
-            handleChange={(data: string | boolean) =>
-              handleChange("password", data)
-            }
-            type={"password"}
-          />
+        <h1 className={"loginSignupHeader"}>Signup</h1>
+        <h3 className={"loginSignupSubHeader"}>
+          Already have an account?
+          <Link className={"loginSignupLink"} to={"login"}>
+            Login
+          </Link>
+        </h3>
+        <form className={"form"}>
+          <div className={"inputsContainer"}>
+            <TextInput
+              name={"Name"}
+              placeholder={"e.g. Thomas"}
+              handleChange={(data: string) => handleChange("name", data)}
+              type={"text"}
+            />
+
+            <TextInput
+              name={"Email"}
+              placeholder={"e.g. demo@email.com"}
+              handleChange={(data: string) => handleChange("email", data)}
+              type={"email"}
+            />
+            <TextInput
+              name={"Password"}
+              placeholder={"password"}
+              handleChange={(data: string) => handleChange("password", data)}
+              type={"password"}
+            />
+          </div>
+          <div className={"separatorLine"}></div>
+          <div className={"loginOtherWay"}>
+            <GoogleLogin
+              buttonText={"Continue with Google"}
+              clientId={"sdsdasd"}
+            />
+          </div>
         </form>
         {loading ? (
           <div className="loadingIndicator">
@@ -83,19 +95,18 @@ const SignUpScreen: React.FC = () => {
           </div>
         ) : (
           <input
-            className={"submitButton"}
+            className={"submitButton submitButtonHome"}
             type={"button"}
             value={"Submit"}
             onClick={submitForm}
           />
         )}
 
-        <Link to={"login"}>
-          <h5>Already got user?</h5>
-        </Link>
         {message ? (
           <h1 className={"messageResponse"}>{message.replace(/"/g, "")}</h1>
-        ) : null}
+        ) : (
+          <h1 className={"messageResponse"}>{"    "}</h1>
+        )}
       </div>
     </div>
   );

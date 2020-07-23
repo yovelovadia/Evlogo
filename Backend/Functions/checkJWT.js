@@ -11,7 +11,6 @@ const checkJWT = (req, res, next) => {
     const secret = process.env.JWT_KEY;
     const decoded = jwt.verify(token, secret);
     req.decoded = decoded;
-    console.log(decoded);
     next();
   } catch (err) {
     console.log(err);

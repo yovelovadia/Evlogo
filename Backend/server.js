@@ -29,7 +29,16 @@ app.use("/assets", Assets);
 const Users = require("./Routes/Users");
 app.use("/users", Users);
 
+const Files = require("./Routes/Files");
+app.use("/files", Files);
+
 ////////////////////////////////////////////////////////////////////////
+
+app.use(express.static(path.join(__dirname, "../Client/build")));
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../Client/build", "index.html"));
+});
 
 connection
   .once("open", () => {

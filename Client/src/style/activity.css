@@ -11,13 +11,52 @@ body {
   margin: 0;
   padding: 0;
   overflow: auto;
-  font-family: sans-serif;
+  font-family: Saira Condensed;
+}
+
+.canvas {
+  overflow-x: hidden;
 }
 
 /* overAll classes */
 
 input[type="button"] {
   outline: none;
+  font-family: Saira Condensed;
+}
+
+.normalInput {
+  outline: none;
+  font-size: 15px;
+  padding: 10px;
+  border: 2px solid var(--main-lighter-black);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.slider {
+  -webkit-appearance: none;
+  background-color: black;
+  height: 5px;
+  border-radius: 0.4em;
+  outline: none;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 100%;
+  background-color: var(--main-red-color);
+}
+
+.slider::-webkit-slider-thumb:hover {
+  border: 3px solid var(--main-red-color);
+
+  background-color: white;
 }
 
 .submitButton {
@@ -25,6 +64,7 @@ input[type="button"] {
   background: var(--main-lighter-black);
   color: white;
   font-weight: 100;
+  font-size: 17px;
   padding: 14px;
   text-transform: uppercase;
   border-radius: 6px;
@@ -155,7 +195,7 @@ a {
   border-bottom: 2px solid black;
   line-height: 0.1em;
   margin: 100px 0;
-  font-family: "Indie Flower";
+  font-family: Farsan;
 }
 
 .sectionContainerHeader span {
@@ -193,10 +233,6 @@ a {
   box-shadow: 2px 2px 4px black;
 }
 
-.blessingTextArea {
-  padding: 5px;
-}
-
 .imagesOnCarouselContainer:hover > .addStickerButton {
   opacity: 1;
 }
@@ -215,12 +251,79 @@ a {
   box-shadow: inset 1px 1px 5px var(--main-lighter-black);
 }
 
+/* uploadImage */
+
+.uploadImageSide {
+  display: flex;
+  align-items: flex-start;
+  width: 90%;
+  justify-content: space-around;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.upload-btn-wrapper button {
+  border: 2px solid grey;
+  color: gray;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  width: 164px;
+  margin-bottom: 40px;
+  outline: none;
+  text-align: left;
+}
+
+.upload-btn-wrapper input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.uploadNormalInput {
+  width: 140px;
+  border: 2px solid grey;
+  color: grey;
+  margin-bottom: 40px;
+}
+
+.uploadTitle {
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.uploadImageButton {
+  padding: 5px 20px;
+  background-color: white;
+  border: 2px solid var(--main-lighter-black);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.uploadImageButton:hover {
+  background-color: var(--main-red-color);
+}
+
 /* peragraph text writing */
+
+.peragraphTextArea {
+  padding: 5px;
+  font-family: sans-serif;
+  resize: vertical;
+}
 
 .peragraphToolBarContainer {
   display: flex;
-  width: 80%;
+  width: 100%;
   justify-content: space-between;
+  align-items: center;
 }
 
 .textAlignContainer {
@@ -245,7 +348,51 @@ a {
   border-top: 1px solid black;
 }
 
-/* Canvas */
+/* song */
+.songContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+/* finished */
+
+.finished {
+  background-color: var(--main-lighter-black);
+  padding: 100px 0;
+  margin-top: 50px;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.createLink {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  border: 3px solid white;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.createLink:hover {
+  background-color: white;
+  color: black;
+}
+
+.finishedMessage {
+  padding: 15px 0;
+}
+
+.finishedLink {
+  color: white;
+  border: 1px solid white;
+  padding: 3px;
+}
 
 /* preview screen */
 .previewBackground {
@@ -255,13 +402,34 @@ a {
   overflow-x: hidden;
   overflow-y: auto;
 }
+.previewBackground::-webkit-scrollbar {
+  display: none;
+}
+
 .previewImages {
   position: absolute;
+}
+/* images */
+.image {
+  position: absolute;
+  transform-origin: top left;
+  opacity: 0;
+  padding-bottom: 40vh;
+}
+
+/* fade in animation */
+.fadeIn {
+  opacity: 0;
+  transition: opacity 250ms ease-in;
+}
+
+.fadeIn.appear {
+  opacity: 1;
 }
 
 /* preview button */
 
-.headerPreviewButton {
+.coolAnimatedButton {
   display: block;
   width: 200px;
   height: 40px;
@@ -278,12 +446,12 @@ a {
   border-radius: 10px;
 }
 
-.headerPreviewButton span {
+.coolAnimatedButton span {
   position: relative;
   z-index: 2;
 }
 
-.headerPreviewButton:after {
+.coolAnimatedButton:after {
   position: absolute;
   content: "";
   top: 0;
@@ -295,11 +463,11 @@ a {
   transition: all 0.35s;
 }
 
-.headerPreviewButton:hover {
+.coolAnimatedButton:hover {
   color: white;
 }
 
-.headerPreviewButton:hover:after {
+.coolAnimatedButton:hover:after {
   width: 100%;
 }
 

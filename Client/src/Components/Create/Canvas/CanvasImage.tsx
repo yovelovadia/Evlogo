@@ -10,15 +10,25 @@ const CanvasImage: React.FC<ImageProps> = (props) => {
   const imageRef: React.MutableRefObject<any> = useRef();
 
   const storeCordInRedux = (data: any): void => {
-    console.log(data);
     const x: number = data.currentTarget.attrs.x;
     const y: number = data.currentTarget.attrs.y;
     const scaleX: number = data.currentTarget.attrs.scaleX;
     const scaleY: number = data.currentTarget.attrs.scaleY;
     const rotation: number = data.currentTarget.attrs.rotation;
     const imageID: string = props.imageID;
+    const precentageWidth: number =
+      (data.currentTarget.attrs.image.naturalWidth * scaleX * 100) /
+      window.screen.width;
 
-    const cords: ImageType = { x, y, rotation, imageID, scaleX, scaleY };
+    const cords: ImageType = {
+      x,
+      y,
+      rotation,
+      imageID,
+      scaleX,
+      scaleY,
+      precentageWidth,
+    };
     dispatch({ type: "IMAGE_CORDINATES", value: cords });
   };
 
@@ -40,21 +50,6 @@ const CanvasImage: React.FC<ImageProps> = (props) => {
         storeCordInRedux(e);
       }}
     />
-    // <Rect
-    //   ref={testRef}
-    //   x={20}
-    //   y={50}
-    //   width={100}
-    //   height={100}
-    //   fill="red"
-    //   shadowBlur={10}
-    //   draggable
-    //   onMouseDown={(e) => {
-    //     props.selected(testRef);
-    //     console.log(e);
-    //   }}
-    //   onTransformEnd={(e) => console.log(e)}
-    // />
   );
 };
 

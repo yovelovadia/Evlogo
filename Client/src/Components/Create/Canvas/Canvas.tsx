@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import CanvasImage from "./CanvasImage";
 import { useSelector, useDispatch } from "react-redux";
 import CanvasPeragraph from "./CanvasPeragraph";
@@ -9,6 +9,7 @@ import {
   BackgroundType,
 } from "../../../Types";
 import { Transformer, Stage, Layer } from "react-konva";
+import fetchData from "../../../customeFunctions/fetchData";
 
 const Canvas = () => {
   const data: CanvasTypes = useSelector((state) => state.canvas);
@@ -24,17 +25,20 @@ const Canvas = () => {
     }
   };
 
+  const canvasRef: any = useRef();
+
   return (
     <React.Fragment>
       <Stage
+        ref={canvasRef}
         className={"canvas"}
-        width={window.outerWidth}
-        height={window.pageYOffset + window.outerHeight}
+        width={window.screen.width}
+        height={3000}
         onMouseDown={(e) => deSelect(e)}
         style={{
-          background: `linear-gradient(45deg,${background.color1},${
-            background.color2 ? background.color2 : background.color1
-          })`,
+          background: `linear-gradient(${background.degree}deg,${
+            background.color1
+          },${background.color2 ? background.color2 : background.color1})`,
         }}
       >
         <Layer>
@@ -63,13 +67,7 @@ const Canvas = () => {
             />
           ) : null}
 
-          <CanvasPeragraph
-            selected={(data) => {
-              selectShape(data.current);
-            }}
-            dispatch={dispatch}
-            peragraph={peragraph}
-          />
+          <CanvasPeragraph dispatch={dispatch} peragraph={peragraph} />
         </Layer>
       </Stage>
     </React.Fragment>

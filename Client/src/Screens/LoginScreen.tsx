@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import fetchData from "../customeFunctions/fetchData";
 import { UserInfo } from "../Types";
 import TextInput from "../Components/Home/TextInput";
+import GoogleLogin from "react-google-login";
 
 const LoginScreen: React.FC = () => {
   const history = useHistory();
@@ -31,7 +32,7 @@ const LoginScreen: React.FC = () => {
       localStorage.setItem("jwt", response.data.token);
       setTimeout(() => {
         setLoading(false);
-        history.push("/");
+        history.push("/create");
       }, 1000);
     } catch (err) {
       setLoading(false);
@@ -45,47 +46,62 @@ const LoginScreen: React.FC = () => {
   return (
     <div className={"background"}>
       <div className={"signupLoginContainer"}>
-        <h1 className={"header"}>Login</h1>
-        <form className={"inputsContainer"}>
-          <TextInput
-            name={"Email"}
-            placeholder={"e.g. demo@email.com"}
-            handleChange={(data: string | boolean) =>
-              handleChange("email", data)
-            }
-            type={"email"}
-          />
-          <TextInput
-            name={"Password"}
-            placeholder={"password"}
-            handleChange={(data: string | boolean) =>
-              handleChange("password", data)
-            }
-            type={"password"}
-          />
-        </form>
-        {loading ? (
-          <div className="loadingIndicator">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <h1 className={"loginSignupHeader"}>Login</h1>
+        <h3 className={"loginSignupSubHeader"}>
+          Don't have an account?
+          <Link className={"loginSignupLink"} to={"signup"}>
+            Sign Up
+          </Link>
+        </h3>
+        <form className={"form"}>
+          <div className={"inputsContainer"}>
+            <TextInput
+              name={"Email"}
+              placeholder={"e.g. demo@email.com"}
+              handleChange={(data: string | boolean) =>
+                handleChange("email", data)
+              }
+              type={"email"}
+            />
+            <TextInput
+              name={"Password"}
+              placeholder={"password"}
+              handleChange={(data: string | boolean) =>
+                handleChange("password", data)
+              }
+              type={"password"}
+            />
           </div>
-        ) : (
-          <input
-            className={"submitButton"}
-            type={"button"}
-            value={"Login"}
-            onClick={submitForm}
-          />
-        )}
-
-        <Link to={"signup"}>
-          <h5>No user?</h5>
-        </Link>
+          <div className={"separatorLine"}></div>
+          <div className={"loginOtherWay"}>
+            <GoogleLogin
+              buttonText={"Continue with Google"}
+              clientId={"sdsdasd"}
+            />
+          </div>
+        </form>
+        <div className={"submitForm"}>
+          {loading ? (
+            <div className="loadingIndicator">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          ) : (
+            <input
+              className={"submitButton submitButtonHome"}
+              type={"button"}
+              value={"Login"}
+              onClick={submitForm}
+            />
+          )}
+        </div>
         {message ? (
           <h1 className={"messageResponse"}>{message.replace(/"/g, "")}</h1>
-        ) : null}
+        ) : (
+          <h1 className={"messageResponse"}>{"    "}</h1>
+        )}
       </div>
     </div>
   );

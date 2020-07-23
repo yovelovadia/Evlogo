@@ -12,16 +12,16 @@ const PeragraphTextArea: React.FC = () => {
   const align: string = data.textAlign;
 
   const peragraphTextChange = (data: any): void => {
-    const value: string = data.target.value;
-    const key = "text";
-    dispatch({ type: "PERAGRAPH_CHANGE_ATT", value: { value, key } });
+    const peraValue: string = data.target.value;
+    const peraKey = "text";
+    dispatch({ type: "PERAGRAPH_CHANGE_ATT", value: { peraValue, peraKey } });
   };
 
   return (
     <div>
       <textarea
         style={{ textAlign: align as CanvasTextAlign }}
-        className={"blessingTextArea"}
+        className={"peragraphTextArea"}
         spellCheck={"false"}
         onChange={peragraphTextChange}
         rows={10}

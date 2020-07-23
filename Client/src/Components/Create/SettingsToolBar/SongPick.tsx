@@ -2,15 +2,19 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 const SongPick = () => {
-  const [song, setSong] = useState<{ url: string; timeStart: string }>({
+  const [song, setSong] = useState<{
+    url: string;
+    timeStart: string | undefined;
+  }>({
     url: "",
-    timeStart: "0",
+    timeStart: undefined,
   });
   const dispatch: any = useDispatch();
   return (
-    <div>
+    <div className={"songContainer"}>
       <input
-        type={"text"}
+        className={"normalInput"}
+        type={"url"}
         value={song.url}
         name={"Youtube url"}
         placeholder={"Youtube Link"}
@@ -20,6 +24,7 @@ const SongPick = () => {
       />
 
       <input
+        className={"normalInput"}
         type={"text"}
         value={song.timeStart}
         onChange={(data) => setSong({ ...song, timeStart: data.target.value })}
@@ -29,7 +34,7 @@ const SongPick = () => {
       <input
         className={"submitButton"}
         type={"button"}
-        value={"submit"}
+        value={"Pick song"}
         onClick={() => dispatch({ type: "SONG_ADD_URL", value: song })}
       />
     </div>
