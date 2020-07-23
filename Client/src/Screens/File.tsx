@@ -81,7 +81,10 @@ const File: React.FC = (props: any) => {
                     draggable={false}
                     alt={"somthing"}
                     key={item}
-                    src={`https://evlogo.herokuapp.com/file/${canvas.images[item].src}`}
+                    src={canvas.images[item].src}
+                    onError={(err) =>
+                      (err.currentTarget.src = `https://evlogo.herokuapp.com/${canvas.images[item].src}`)
+                    }
                     className={"fadeIn image"}
                     style={{
                       width: `${precentageWidth}%`,
