@@ -46,7 +46,7 @@ const PreviewScreen: React.FC = () => {
             textAlign: peragraph.textAlign as CanvasTextAlign,
             color: peragraph.color,
             margin: "0",
-            lineHeight: "1",
+            lineHeight: peragraph.lineHeight,
           }}
         >
           {peragraph.text}
