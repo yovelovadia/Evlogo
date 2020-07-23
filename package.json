@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/yovelovadia/birthdayMaker/issues"
   },
-  "homepage": "https://github.com/yovelovadia/birthdayMaker#readme"
+  "homepage": "https://github.com/yovelovadia/birthdayMaker#readme",
+  "engines": {
+    "node": "12.14.1"
+  }
 }
