@@ -14,16 +14,12 @@ router.post("/create", checkJWT, (req, res, next) => {
     });
     console.log(file._id);
 
-    file
-      .save()
-      .then(() =>
-        res
-          .status(200)
-          .json({
-            message: "Created",
-            link: `http://localhost:3000/file/${file._id}`,
-          })
-      );
+    file.save().then(() =>
+      res.status(200).json({
+        message: "Created",
+        link: `https://evlogo.herokuapp.com/file/${file._id}`,
+      })
+    );
   } catch (err) {
     console.log(err);
   }
