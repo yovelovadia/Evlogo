@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import canvas from "./canvasSettings";
+import canvasReducer from "./canvasReducer";
 
-const allReducers = combineReducers({ canvas });
+const allReducers = combineReducers({ canvasReducer });
 
 export default allReducers;

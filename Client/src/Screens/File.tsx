@@ -83,7 +83,7 @@ const File: React.FC = (props: any) => {
                     key={item}
                     src={canvas.images[item].src}
                     onError={(err) =>
-                      (err.currentTarget.src = `https://evlogo.herokuapp.com/${canvas.images[item].src}`)
+                      (err.currentTarget.src = `https://localhost3000/${canvas.images[item].src}`)
                     }
                     className={"fadeIn image"}
                     style={{

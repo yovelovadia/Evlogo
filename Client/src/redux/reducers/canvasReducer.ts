@@ -1,5 +1,7 @@
 import { CanvasTypes } from "../../Types";
 
+let imageNumber: number = 0;
+
 const initialState: CanvasTypes = {
   images: {},
   peragraph: {
@@ -16,7 +18,7 @@ const initialState: CanvasTypes = {
   background: { color1: "#F76464", color2: "#50EFF2", degree: 90 },
 };
 
-const canvas = (state = initialState, action) => {
+const canvasReducer = (state = initialState, action) => {
   switch (action.type) {
     case "PERAGRAPH_CORD":
       const peragraphX: number = action.value.x;
@@ -51,7 +53,7 @@ const canvas = (state = initialState, action) => {
         ...state,
         images: {
           ...state.images,
-          ["id" + Date.now().toString()]: { src: action.value },
+          [`image${++imageNumber}`]: { src: action.value },
         },
       };
       return imageAdd;
@@ -98,4 +100,4 @@ const canvas = (state = initialState, action) => {
   }
 };
 
-export default canvas;
+export default canvasReducer;

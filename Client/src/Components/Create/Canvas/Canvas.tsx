@@ -12,7 +12,7 @@ import { Transformer, Stage, Layer } from "react-konva";
 import fetchData from "../../../customeFunctions/fetchData";
 
 const Canvas = () => {
-  const data: CanvasTypes = useSelector((state) => state.canvas);
+  const data: CanvasTypes = useSelector((state) => state.canvasReducer);
   const images: { [key: string]: ImageType } = data.images;
   const peragraph: Peragraph = data.peragraph;
   const background: BackgroundType = data.background;

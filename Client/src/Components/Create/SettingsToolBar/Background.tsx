@@ -5,7 +5,7 @@ import { BackgroundType } from "../../../Types";
 const Background: React.FC = () => {
   const dispatch = useDispatch();
   const background: BackgroundType = useSelector(
-    (state) => state.canvas.background
+    (state) => state.canvasReducer.background
   );
 
   const changeBgAtt = (bgKey: string, bgValue: string | number): void => {

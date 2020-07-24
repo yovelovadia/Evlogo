@@ -12,9 +12,9 @@ const ImageInCarousel: React.FC<Props> = (props) => {
         src={src}
         className={"imagesOnCarousel"}
         alt={"Image not found"}
-        onError={() => {
-          setSrc(`http://localhost:5000/${src}`);
-        }}
+        // onError={() => {
+        //   setSrc(`http://localhost:5000/${src}`);
+        // }}
       />
       <input
         onClick={() => {

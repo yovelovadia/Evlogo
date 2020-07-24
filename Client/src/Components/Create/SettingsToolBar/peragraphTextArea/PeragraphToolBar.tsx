@@ -31,7 +31,9 @@ const fonts: string[] = [
 
 const PeragraphToolBar: React.FC = () => {
   const dispatch: any = useDispatch();
-  const peragraph: Peragraph = useSelector((state) => state.canvas.peragraph);
+  const peragraph: Peragraph = useSelector(
+    (state) => state.canvasReducer.peragraph
+  );
   const align: string = peragraph.textAlign;
   const fontSize: number = peragraph.fontSize;
   const color: string = peragraph.color;

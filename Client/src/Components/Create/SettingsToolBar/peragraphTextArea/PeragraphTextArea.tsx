@@ -7,7 +7,7 @@ import PeragraphToolBar from "./PeragraphToolBar";
 
 const PeragraphTextArea: React.FC = () => {
   const dispatch: any = useDispatch();
-  const data: Peragraph = useSelector((state) => state.canvas.peragraph);
+  const data: Peragraph = useSelector((state) => state.canvasReducer.peragraph);
   const text: string = data.text;
   const align: string = data.textAlign;
 
