@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-import { useDispatch } from "react-redux";
 import { Image as KonvaImage } from "react-konva";
 import { ImageType, ImageProps } from "../../../Types";
+import { imageCordinates } from "../../../redux/actions";
 
 const CanvasImage: React.FC<ImageProps> = (props) => {
   const dispatch = props.dispatch;
@@ -29,7 +29,7 @@ const CanvasImage: React.FC<ImageProps> = (props) => {
       scaleY,
       precentageWidth,
     };
-    dispatch({ type: "IMAGE_CORDINATES", value: cords });
+    dispatch(imageCordinates(cords));
   };
 
   return (

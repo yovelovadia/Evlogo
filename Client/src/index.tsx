@@ -5,8 +5,8 @@ import "./style/home.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { createStore, compose } from "redux";
-import combineReducers from "./redux/reducers/combineReducers";
-import "./style/fonts.css";
+import combineReducers from "./redux/combineReducers";
+import "./style/fontsAndBackgrounds.css";
 import { Provider } from "react-redux";
 
 declare global {

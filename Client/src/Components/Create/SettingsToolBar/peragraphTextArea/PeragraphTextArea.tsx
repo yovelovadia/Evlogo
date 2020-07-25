@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Peragraph } from "../../../../Types";
 import PeragraphToolBar from "./PeragraphToolBar";
+import { peragraphChangeAtt } from "../../../../redux/actions";
 
 // The text area where u type the blessing
 
@@ -13,8 +14,8 @@ const PeragraphTextArea: React.FC = () => {
 
   const peragraphTextChange = (data: any): void => {
     const peraValue: string = data.target.value;
-    const peraKey = "text";
-    dispatch({ type: "PERAGRAPH_CHANGE_ATT", value: { peraValue, peraKey } });
+    const peraKey: string = "text";
+    dispatch(peragraphChangeAtt(peraValue, peraKey));
   };
 
   return (

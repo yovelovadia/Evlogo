@@ -4,6 +4,20 @@ export interface Props {
   imageID?: string;
 }
 
+export interface ImageProps {
+  image: ImageType;
+  imageID: string;
+  dispatch: any;
+  selected: (data: any) => void;
+}
+
+export interface ColorPickerProps {
+  checked: boolean;
+  name: string;
+  activeName: string;
+  value: string;
+}
+
 export interface ImageType {
   src?: string;
   rotate?: number;
@@ -14,13 +28,6 @@ export interface ImageType {
   scaleX?: number;
   scaleY?: number;
   precentageWidth?: number;
-}
-
-export interface ImageProps {
-  image: ImageType;
-  imageID: string;
-  dispatch: any;
-  selected: (data: any) => void;
 }
 
 export interface Peragraph {
@@ -42,10 +49,15 @@ export interface PeragraphProps {
 }
 
 export interface BackgroundType {
-  color1?: string;
-  color2?: string;
-  color3?: string;
+  color1: string;
+  color2: string;
+  color2Active: boolean;
+  color3: string;
+  color3Active: boolean;
+  color4: string;
+  color4Active: boolean;
   degree: number;
+  animated: boolean;
 }
 
 export interface CanvasTypes {

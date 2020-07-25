@@ -213,6 +213,20 @@ a {
   border-bottom: 3px solid black;
 }
 
+/* backgroundColors/container */
+
+.backgroudContainer {
+  display: flex;
+  width: 90%;
+  justify-content: space-around;
+}
+
+.degreeSlider {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 /* images/stickers */
 
 .slick-prev:before,
@@ -258,12 +272,12 @@ a {
   align-items: flex-start;
   width: 90%;
   justify-content: space-around;
+  margin-bottom: 40px;
 }
 
 .upload-btn-wrapper {
   position: relative;
   overflow: hidden;
-  display: inline-block;
 }
 
 .upload-btn-wrapper button {
@@ -275,7 +289,6 @@ a {
   font-size: 15px;
   font-weight: bold;
   width: 164px;
-  margin-bottom: 40px;
   outline: none;
   text-align: left;
 }
@@ -285,13 +298,19 @@ a {
   left: 0;
   top: 0;
   opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.upload-btn-wrapper h4 {
+  cursor: pointer;
 }
 
 .uploadNormalInput {
   width: 140px;
   border: 2px solid grey;
   color: grey;
-  margin-bottom: 40px;
 }
 
 .uploadTitle {
@@ -311,7 +330,7 @@ a {
   background-color: var(--main-red-color);
 }
 
-/* peragraph text writing */
+/* peragraph /peragraph tool bar */
 
 .peragraphTextArea {
   padding: 5px;
@@ -328,6 +347,7 @@ a {
 
 .textAlignContainer {
   display: flex;
+  height: 25px;
 }
 
 .textAlignRadio {
@@ -340,18 +360,43 @@ a {
 }
 
 .fontSizeInput {
-  width: 40px;
+  width: 50px;
   height: 20px;
   outline: none;
   border: none;
-  border-bottom: 1px solid black;
-  border-top: 1px solid black;
+  font-size: 20px;
+  border-top: 1px solid var(--main-lighter-black);
+  border-right: 1px solid var(--main-lighter-black);
+  border-radius: 5px;
+}
+
+.numbersInputContainer {
+  display: flex;
+  margin: 20px 0;
+  width: 140px;
+  color: var(--main-lighter-black);
+  padding: 5px;
+  align-items: center;
+  border-bottom: 1px solid var(--main-lighter-black);
+}
+.numbersInputContainer h3 {
+  margin-left: 10px;
+}
+
+.fontFamilySelector {
+  border: none;
+  background-color: var(--main-lighter-black);
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 /* song */
 .songContainer {
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 /* finished */
@@ -398,12 +443,13 @@ a {
 .previewBackground {
   position: fixed;
   width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
-.previewBackground::-webkit-scrollbar {
-  display: none;
+
+.previewContainer {
+  height: auto;
+  overflow-y: auto;
+  min-height: 100vh;
+  position: relative;
 }
 
 .previewImages {
@@ -414,7 +460,7 @@ a {
   position: absolute;
   transform-origin: top left;
   opacity: 0;
-  padding-bottom: 40vh;
+  padding-bottom: 30vh;
 }
 
 /* fade in animation */

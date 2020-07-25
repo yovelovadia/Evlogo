@@ -9,15 +9,16 @@ const ImageCarousel: React.FC<{ userImages: boolean; refresh: boolean }> = (
   props
 ) => {
   const [images, setImages] = useState<any[]>([]);
-
+ 
+  // settings for carousel
   var settings = {
-    // settings for carousel
     dots: true,
     infinite: images.length < 3 ? false : true,
     slidesToShow: 3,
     slidesToScroll: 2,
   };
 
+  //get the images from the server both user(based on userID) and default images
   useEffect(() => {
     const getImages = async (): Promise<void> => {
       const data: any = await fetchData(

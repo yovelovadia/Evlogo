@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { songUrl } from "../../../redux/actions";
 
 const SongPick = () => {
   const [song, setSong] = useState<{
     url: string;
     timeStart: string | undefined;
-  }>({
-    url: "",
-    timeStart: undefined,
-  });
+  }>({ url: "", timeStart: undefined });
+  const [message, setMessage] = useState<string>("");
   const dispatch: any = useDispatch();
   return (
     <div className={"songContainer"}>
@@ -35,8 +34,12 @@ const SongPick = () => {
         className={"submitButton"}
         type={"button"}
         value={"Pick song"}
-        onClick={() => dispatch({ type: "SONG_ADD_URL", value: song })}
+        onClick={() => {
+          dispatch(songUrl(song));
+          setMessage("Song picked");
+        }}
       />
+      <h1>{message}</h1>
     </div>
   );
 };

@@ -1,4 +1,5 @@
-import { CanvasTypes } from "../../Types";
+import { CanvasTypes } from "../Types";
+import * as actions from "./actionTypes";
 
 let imageNumber: number = 0;
 
@@ -15,12 +16,22 @@ const initialState: CanvasTypes = {
     y: 100,
   },
   song: "",
-  background: { color1: "#F76464", color2: "#50EFF2", degree: 90 },
+  background: {
+    color1: "#ee7752",
+    color2: "#e73c7e",
+    color2Active: true,
+    color3: "#23a6d5",
+    color3Active: true,
+    color4: "#23d5ab",
+    color4Active: true,
+    animated: true,
+    degree: 90,
+  },
 };
 
 const canvasReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "PERAGRAPH_CORD":
+    case actions.CHANGE_PERA_CORD:
       const peragraphX: number = action.value.x;
       const peragraphY: number = action.value.y;
       const peraCord: CanvasTypes = {
@@ -29,7 +40,7 @@ const canvasReducer = (state = initialState, action) => {
       };
       return peraCord;
 
-    case "PERAGRAPH_CHANGE_ATT":
+    case actions.PERAGRAPH_CHANGE_ATT:
       const peraValue: number | string = action.value.peraValue;
       const peraKey: string = action.value.peraKey;
       const change: CanvasTypes = {
@@ -38,8 +49,8 @@ const canvasReducer = (state = initialState, action) => {
       };
       return change;
 
-    case "BACKGROUND_CHANGE_ATT":
-      const bgValue: string = action.value.bgValue;
+    case actions.BACKGROUND_CHANGE_ATT:
+      const bgValue: string | boolean = action.value.bgValue;
       const bgKey: string = action.value.bgKey;
       const background: CanvasTypes = {
         ...state,
@@ -48,7 +59,7 @@ const canvasReducer = (state = initialState, action) => {
 
       return background;
 
-    case "IMAGE_ADD":
+    case actions.IMAGE_ADD:
       const imageAdd: CanvasTypes = {
         ...state,
         images: {
@@ -58,7 +69,7 @@ const canvasReducer = (state = initialState, action) => {
       };
       return imageAdd;
 
-    case "IMAGE_CORDINATES":
+    case actions.IMAGE_CORDINATES:
       const imageID: string = action.value.imageID;
       const x: number = action.value.x;
       const y: number = action.value.y;
@@ -84,7 +95,7 @@ const canvasReducer = (state = initialState, action) => {
 
       return imageCord;
 
-    case "SONG_ADD_URL":
+    case actions.SONG_ADD_URL:
       const timeStart: string | undefined = action.value.timeStart;
       const songAdd: string =
         action.value?.url.replace("watch?v=", "embed/") +

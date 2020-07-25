@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import fetchData from "../../../customeFunctions/fetchData";
 import { useDispatch } from "react-redux";
+import { addImage } from "../../../redux/actions";
 
 const UploadImage: React.FC<{ refresh: () => void }> = (props) => {
   const dispatch = useDispatch();
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState<any>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -31,8 +32,8 @@ const UploadImage: React.FC<{ refresh: () => void }> = (props) => {
       }
     }
   };
-  //uploading files by dragging on screen and placing them
-  const uploadByDrag = async (droppedImage): Promise<void> => {
+  //uploading files by dragging on screen and placing them ///////////////////////////////////////////////////// neeeeed fix asap
+  const uploadByDrag = async (droppedImage: any): Promise<void> => {
     try {
       const data: FormData = new FormData();
       data.append("image", droppedImage);
@@ -42,17 +43,17 @@ const UploadImage: React.FC<{ refresh: () => void }> = (props) => {
         data
       );
       const link: string = response.data.link;
-      dispatch({ type: "IMAGE_ADD", value: `http://localhost:5000/${link}` });
-      props.refresh();
+      dispatch(addImage(`http://localhost:5000/${link}`));
+      console.log("nigger");
+      setMessage(response.data.message);
     } catch (err) {
-      if (err.response) {
+      if (err.response?.data) {
         const link: string = err.response.data.link;
-        dispatch({ type: "IMAGE_ADD", value: `http://localhost:5000/${link}` });
-        props.refresh();
+        dispatch(addImage(`http://localhost:5000/${link}`));
       }
     }
   };
-  //uploading files by dragging on screen
+  //uploading images by dragging them on screen
   useEffect(() => {
     const pageContainer = document.getElementById("pageContainer");
     pageContainer.addEventListener("dragover", (event) => {
@@ -70,6 +71,7 @@ const UploadImage: React.FC<{ refresh: () => void }> = (props) => {
     });
   });
 
+  //upload by url link
   const submitUrl = async (): Promise<void> => {
     try {
       const response = await fetchData(
@@ -81,6 +83,7 @@ const UploadImage: React.FC<{ refresh: () => void }> = (props) => {
       );
       setMessage(response.data.message);
       props.refresh();
+      setImageUrl(null);
     } catch (err) {
       if (err.response) {
         setMessage(err.response.data.error);

@@ -4,7 +4,7 @@ import PeragraphTextArea from "./peragraphTextArea/PeragraphTextArea";
 import UploadImage from "./UploadImage";
 import SongPick from "./SongPick";
 import Header from "./Header";
-import Background from "./Background";
+import Background from "./Background/Background";
 import Finished from "./Finished";
 import { FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
 

@@ -8,7 +8,7 @@ const HomeScreen = () => {
       <div className={"homeImage"}>
         <header className={"navbar"}>
           <Link to={"/"}>
-            <h1 className={"logo"}> EVLOGO</h1>
+            <h1 className={"logo"}>EVLOGO</h1>
           </Link>
           <ul className={"links"}>
             <li>
@@ -27,7 +27,7 @@ const HomeScreen = () => {
           </ul>
         </header>
         <div className={"titleContainer"}>
-          <h1 className={"title"}>Where dreams come true</h1>
+          <h1 className={"title"}>Lorem ipsum dolor sit amet.</h1>
           <h5 className={"subTitle"}>
             Evlogo gives u the tools to build an awesome blessing
           </h5>

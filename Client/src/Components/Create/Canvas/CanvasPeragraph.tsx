@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Text } from "react-konva";
 import { PeragraphProps } from "../../../Types";
+import { peragraphCordinates } from "../../../redux/actions";
 
 const CanvasPeragraph: React.FC<PeragraphProps> = ({ peragraph, dispatch }) => {
   const storeCordInRedux = (data: any): void => {
@@ -8,7 +9,7 @@ const CanvasPeragraph: React.FC<PeragraphProps> = ({ peragraph, dispatch }) => {
     const y: number = data.currentTarget.attrs.y;
     const peraCord: { x: number; y: number } = { x, y };
 
-    dispatch({ type: "PERAGRAPH_CORD", value: peraCord });
+    dispatch(peragraphCordinates(peraCord));
   };
 
   return (

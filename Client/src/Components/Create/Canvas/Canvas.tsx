@@ -9,7 +9,7 @@ import {
   BackgroundType,
 } from "../../../Types";
 import { Transformer, Stage, Layer } from "react-konva";
-import fetchData from "../../../customeFunctions/fetchData";
+import styled, { keyframes } from "styled-components";
 
 const Canvas = () => {
   const data: CanvasTypes = useSelector((state) => state.canvasReducer);
@@ -25,20 +25,25 @@ const Canvas = () => {
     }
   };
 
-  const canvasRef: any = useRef();
-
   return (
     <React.Fragment>
       <Stage
-        ref={canvasRef}
-        className={"canvas"}
+        className={"animation canvas "}
         width={window.screen.width}
         height={3000}
         onMouseDown={(e) => deSelect(e)}
         style={{
-          background: `linear-gradient(${background.degree}deg,${
+          backgroundImage: `linear-gradient(${background.degree}deg, ${
             background.color1
-          },${background.color2 ? background.color2 : background.color1})`,
+          } ${
+            background.color2Active
+              ? "," + background.color2
+              : "," + background.color1
+          } ${background.color3Active ? "," + background.color3 : ""}${
+            background.color4Active ? "," + background.color4 : ""
+          })`, //background image for dodging conflicts instead of background:
+          backgroundSize: "400% 400%",
+          animation: background.animated ? "gradient 10s ease infinite" : null,
         }}
       >
         <Layer>

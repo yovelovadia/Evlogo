@@ -77,11 +77,15 @@ router.post(
           );
         });
 
+      const img = `Assets/usersImages/${userID}/${req.file.originalname.slice(
+        0,
+        -3
+      )}jpg
+      `;
+
       const newImage = new imageSchema({
         userID,
-        img: `Assets/usersImages/${userID}/${
-          req.file.originalname.slice(0, -3) + "jpg"
-        }`,
+        img,
       });
 
       newImage
@@ -93,12 +97,10 @@ router.post(
         ) // saving path in database
         .catch((err) => {
           if (err.name === "MongoError") {
-            res
-              .status(409)
-              .json({
-                error: "Image name already exists, check again",
-                link: newImage.img,
-              });
+            res.status(409).json({
+              error: "Image name already exists, check again",
+              link: newImage.img,
+            });
           }
           res.status(500).json({ error: "Error occured try again" });
         });

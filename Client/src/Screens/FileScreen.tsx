@@ -26,13 +26,25 @@ const File: React.FC = (props: any) => {
         <div
           className={"previewBackground"}
           style={{
-            background: `linear-gradient(${canvas.background.degree}deg,${
+            backgroundImage: `linear-gradient(${canvas.background.degree}deg, ${
               canvas.background.color1
-            },${
-              canvas.background.color2
-                ? canvas.background.color2
-                : canvas.background.color1
-            })`,
+            } ${
+              canvas.background.color2Active
+                ? "," + canvas.background.color2
+                : "," + canvas.background.color1
+            } ${
+              canvas.background.color3Active
+                ? "," + canvas.background.color3
+                : ""
+            }${
+              canvas.background.color4Active
+                ? "," + canvas.background.color4
+                : ""
+            })`, //background image for dodging conflicts instead of background:
+            backgroundSize: "400% 400%",
+            animation: canvas.background.animated
+              ? "gradient 10s ease infinite"
+              : null,
           }}
         >
           {/* peragraph */}
