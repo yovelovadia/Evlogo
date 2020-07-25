@@ -12,7 +12,7 @@ const ImageInCarousel: React.FC<Props> = (props) => {
       <img src={src} className={"imagesOnCarousel"} alt={"Image not found"} />
       <input
         onClick={() => {
-          dispatch(addImage(src)); // adding new image to redux...
+          dispatch(addImage(`http://localhost:5000/${src}`)); // adding new image to redux...
         }}
         type={"button"}
         value={"Add"}

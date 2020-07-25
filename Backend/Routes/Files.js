@@ -12,7 +12,6 @@ router.post("/create", checkJWT, (req, res, next) => {
       userID,
       canvas,
     });
-    console.log(file._id);
 
     file.save().then(() =>
       res.status(200).json({
@@ -21,7 +20,7 @@ router.post("/create", checkJWT, (req, res, next) => {
       })
     );
   } catch (err) {
-    console.log(err);
+    res.status(500).json({ error: "Error accoured try again" });
   }
 });
 

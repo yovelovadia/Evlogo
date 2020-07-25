@@ -8,7 +8,7 @@ const fetchData = async (
   const token: string | null = localStorage.getItem("jwt");
   axios.defaults.headers.common["authorization"] = `Bearer ${token}`; // sending auth for every request
   // console.log(url.slice(21), url);
-  const data = await axios[method](url.slice(21), params);
+  const data = await axios[method](url, params);
   return data;
 };
 

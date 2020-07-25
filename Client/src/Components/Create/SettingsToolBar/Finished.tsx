@@ -4,7 +4,7 @@ import fetchData from "../../../customeFunctions/fetchData";
 import { useSelector } from "react-redux";
 
 const Finished: React.FC = () => {
-  const canvas: CanvasTypes = useSelector((state) => state.canvas);
+  const canvas: CanvasTypes = useSelector((state) => state.canvasReducer);
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<{
     message: string;
