@@ -1,15 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import CanvasImage from "./CanvasImage";
 import { useSelector, useDispatch } from "react-redux";
 import CanvasPeragraph from "./CanvasPeragraph";
+import { Transformer, Stage, Layer } from "react-konva";
+import { imageDelete } from "../../../redux/actions";
 import {
   CanvasTypes,
   ImageType,
   Peragraph,
   BackgroundType,
 } from "../../../Types";
-import { Transformer, Stage, Layer } from "react-konva";
-import { imageDelete } from "../../../redux/actions";
 
 const Canvas = () => {
   const data: CanvasTypes = useSelector((state) => state.canvasReducer);

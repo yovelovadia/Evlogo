@@ -9,6 +9,10 @@ const File: React.FC = (props: any) => {
   const [start, setStart] = useState<boolean>(false);
 
   useEffect(() => {
+    fadeInAnimation();
+  }, [start]);
+
+  useEffect(() => {
     const getData = async (): Promise<any> => {
       const _id: string = props.match.params._id;
       const response: any = await fetchData(
@@ -16,9 +20,12 @@ const File: React.FC = (props: any) => {
         "get"
       );
       setCanvas(response.data.canvas);
+      if (response.data.canvas.song.length < 5) {
+        setStart(true);
+      }
     };
 
-    getData().then(fadeInAnimation);
+    getData();
   }, []);
 
   return (
