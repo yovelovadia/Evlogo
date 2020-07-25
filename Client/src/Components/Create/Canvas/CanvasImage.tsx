@@ -42,7 +42,10 @@ const CanvasImage: React.FC<ImageProps> = (props) => {
       y={props.image.y}
       scaleX={props.image.scaleX || 0.5}
       scaleY={props.image.scaleY || 0.5}
-      onMouseDown={() => props.selected(imageRef)}
+      onMouseDown={() => {
+        props.selectedID(props.imageID);
+        props.selected(imageRef);
+      }}
       onDragEnd={(e) => {
         storeCordInRedux(e);
       }}

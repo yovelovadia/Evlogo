@@ -9,6 +9,7 @@ export interface ImageProps {
   imageID: string;
   dispatch: any;
   selected: (data: any) => void;
+  selectedID: (id: string) => void;
 }
 
 export interface ColorPickerProps {
@@ -66,11 +67,6 @@ export interface CanvasTypes {
   images?: { [key: string]: ImageType };
   background?: BackgroundType;
 }
-
-// export interface screenDimensions {
-//   screenHeight: number;
-//   screenWidth: number;
-// }
 
 export interface UserInfo {
   email: string;

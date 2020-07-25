@@ -53,19 +53,3 @@ const Finished: React.FC = () => {
 };
 
 export default Finished;
-
-// {loading ? (
-//   <div className="loadingIndicator">
-//     <div></div>
-//     <div></div>
-//     <div></div>
-//     <div></div>
-//   </div>
-// ) : (
-//   <input
-//     className={"submitButton submitButtonHome"}
-//     type={"button"}
-//     value={"Login"}
-//     onClick={submitForm}
-//   />
-// )}

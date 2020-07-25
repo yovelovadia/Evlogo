@@ -8,6 +8,10 @@ export const imageCordinates = (value) => {
   return { type: actions.IMAGE_CORDINATES, value };
 };
 
+export const imageDelete = (value) => {
+  return { type: actions.IMAGE_DELETE, value };
+};
+
 export const peragraphCordinates = (value) => {
   return { type: actions.CHANGE_PERA_CORD, value };
 };

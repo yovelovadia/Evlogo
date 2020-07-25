@@ -20,6 +20,14 @@ body {
 
 /* overAll classes */
 
+.trashCan {
+  position: fixed;
+  cursor: pointer;
+  z-index: 1;
+  margin: 20px;
+  font-size: 40px;
+}
+
 input[type="button"] {
   outline: none;
   font-family: Saira Condensed;

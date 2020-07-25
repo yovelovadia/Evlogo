@@ -1,4 +1,4 @@
-import { CanvasTypes } from "../Types";
+import { CanvasTypes, ImageType } from "../Types";
 import * as actions from "./actionTypes";
 
 let imageNumber: number = 0;
@@ -68,6 +68,15 @@ const canvasReducer = (state = initialState, action) => {
         },
       };
       return imageAdd;
+
+    case actions.IMAGE_DELETE:
+      const imageIdForDelete: string = action.value;
+      const images: { [key: string]: ImageType } = state.images;
+      delete images[imageIdForDelete];
+
+      const imageDelete: CanvasTypes = { ...state, images };
+
+      return imageDelete;
 
     case actions.IMAGE_CORDINATES:
       const imageID: string = action.value.imageID;

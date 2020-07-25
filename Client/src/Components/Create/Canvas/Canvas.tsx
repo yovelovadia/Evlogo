@@ -9,14 +9,15 @@ import {
   BackgroundType,
 } from "../../../Types";
 import { Transformer, Stage, Layer } from "react-konva";
-import styled, { keyframes } from "styled-components";
+import { imageDelete } from "../../../redux/actions";
 
 const Canvas = () => {
   const data: CanvasTypes = useSelector((state) => state.canvasReducer);
   const images: { [key: string]: ImageType } = data.images;
   const peragraph: Peragraph = data.peragraph;
   const background: BackgroundType = data.background;
-  const [selectedId, selectShape] = useState<any>(null);
+  const [selectedElement, selectShape] = useState<any>(null);
+  const [imageID, setImageID] = useState<null | string>(null);
   const dispatch: any = useDispatch();
 
   const deSelect = (event) => {
@@ -27,6 +28,18 @@ const Canvas = () => {
 
   return (
     <React.Fragment>
+      {/* trash can will be shown only when element will be selected and will delete by the id taken */}
+      {selectedElement ? (
+        <h1
+          onClick={() => {
+            dispatch(imageDelete(imageID));
+            selectShape(null);
+          }}
+          className={"trashCan"}
+        >
+          &#128465;
+        </h1>
+      ) : null}
       <Stage
         className={"animation canvas "}
         width={window.screen.width}
@@ -56,12 +69,13 @@ const Canvas = () => {
               selected={(data) => {
                 selectShape(data.current);
               }}
+              selectedID={(id) => setImageID(id)}
             />
           ))}
 
-          {selectedId ? (
+          {selectedElement ? (
             <Transformer
-              nodes={[selectedId]}
+              nodes={[selectedElement]}
               rotateEnabled
               enabledAnchors={[
                 "top-left",
