@@ -17,7 +17,7 @@ const PreviewScreen: React.FC = () => {
 
   useEffect(() => {
     fadeInAnimation();
-  }, []);
+  }, [start]);
 
   //makes the page to scroll automaticly based on text position /////// neeededededede workrkrkrk
   // useEffect(() => {
