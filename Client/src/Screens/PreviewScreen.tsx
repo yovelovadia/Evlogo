@@ -48,7 +48,7 @@ const PreviewScreen: React.FC = () => {
         } ${background.color3Active ? "," + background.color3 : ""}${
           background.color4Active ? "," + background.color4 : ""
         })`, //background image for dodging conflicts instead of background:
-        backgroundSize: "400% 400%",
+        backgroundSize: background.animated ? "400% 400%" : null,
         animation: background.animated ? "gradient 10s ease infinite" : null,
       }}
     >
