@@ -17,7 +17,9 @@
     "mozjpeg": "^7.0.0",
     "multer": "^1.4.2",
     "nodemon": "^2.0.4",
-    "sharp": "^0.25.4"
+    "sharp": "^0.25.4",
+    "imagemin-pngquant": "^9.0.0",
+    "imagemin-webp": "^6.0.0"
   },
   "devDependencies": {},
   "scripts": {
