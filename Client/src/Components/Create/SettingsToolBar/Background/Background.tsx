@@ -66,6 +66,18 @@ const Background: React.FC = () => {
         onChange={() => changeBgAtt("animated", !background.animated)}
       />
       <h3>Animated?</h3>
+      <input
+        checked={background.waves}
+        type={"checkbox"}
+        onChange={() => changeBgAtt("waves", !background.waves)}
+      />
+      <h3>Waves?</h3>
+      <input
+        checked={background.snow}
+        type={"checkbox"}
+        onChange={() => changeBgAtt("snow", !background.snow)}
+      />
+      <h3>Snow?</h3>
     </React.Fragment>
   );
 };

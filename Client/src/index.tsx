@@ -2,11 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./style/activity.css";
 import "./style/home.css";
+import "./style/Animations.scss";
+import "./style/fonts.css";
+
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { createStore, compose } from "redux";
 import combineReducers from "./redux/combineReducers";
-import "./style/fontsAndBackgrounds.css";
 import { Provider } from "react-redux";
 
 declare global {

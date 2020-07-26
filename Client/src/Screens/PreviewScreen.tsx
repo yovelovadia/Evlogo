@@ -4,8 +4,8 @@ import Typist from "react-typist";
 import { ImageType, CanvasTypes, BackgroundType, Peragraph } from "../Types";
 import fadeInAnimation from "../customeFunctions/fadeInAnimation";
 import { Link } from "react-router-dom";
-// import styled, { keyframes } from 'styled-components'
-
+import Waves from "../Components/Create/Animations/Waves";
+import Snow from "../Components/Create/Animations/Snow";
 const PreviewScreen: React.FC = () => {
   const data: CanvasTypes = useSelector((state) => state.canvasReducer);
   const images: { [key: string]: ImageType } = data.images;
@@ -79,6 +79,8 @@ const PreviewScreen: React.FC = () => {
         {/* will start only after song is loaded and starting to play */}
         {start ? (
           <React.Fragment>
+            {background.snow ? <Snow color={"white"} /> : null}
+            {background.waves ? <Waves /> : null}
             {/* peragraph */}
             <Typist ref={peragraphRef} show={false} avgTypingDelay={100}>
               <p

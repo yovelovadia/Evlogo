@@ -70,7 +70,7 @@ router.post(
         )
         .then(() => {
           fs.writeFile(
-            `Assets/usersImages/${userID}/${fileName.slice(0, -3) + "jpg"}`, //write the buffer to there
+            `Assets/usersImages/${userID}/${fileName.slice(0, -3) + "webp"}`, //write the buffer to there
             req.file.buffer,
             "base64",
             () => console.log("new image added")
@@ -80,7 +80,7 @@ router.post(
       const img = `Assets/usersImages/${userID}/${req.file.originalname.slice(
         0,
         -3
-      )}jpg
+      )}webp
       `;
 
       const newImage = new imageSchema({
@@ -105,6 +105,7 @@ router.post(
           res.status(500).json({ error: "Error occured try again" });
         });
     } catch (err) {
+      console.log(err);
       res.status(500).json({ error: "Error occured try again" });
     }
   }

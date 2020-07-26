@@ -24,8 +24,10 @@ const initialState: CanvasTypes = {
     color3Active: true,
     color4: "#23d5ab",
     color4Active: true,
-    animated: true,
     degree: 90,
+    animated: true,
+    waves: true,
+    snow: true,
   },
 };
 

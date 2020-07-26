@@ -1,18 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Props } from "../../../../Types";
 import { useDispatch } from "react-redux";
 import { addImage } from "../../../../redux/actions";
 
 const ImageInCarousel: React.FC<Props> = (props) => {
   const dispatch: any = useDispatch();
-  const [src, setSrc] = useState<string>(props.src);
+  const [src, setSrc] = useState<string>(
+    `http://evlogo.herokuapp.com/${props.src}`
+  );
+  let checkErrorHeppend = useRef<boolean>(false);
+
+  console.log(src);
 
   return (
     <div className={"imagesOnCarouselContainer "}>
-      <img src={src} className={"imagesOnCarousel"} alt={"Image not found"} />
+      <img
+        src={src}
+        className={"imagesOnCarousel"}
+        alt={"Image not found"}
+        onError={() => {
+          if (!checkErrorHeppend.current) {
+            setSrc(src.slice(28));
+          }
+          checkErrorHeppend.current = true;
+        }}
+      />
       <input
         onClick={() => {
-          dispatch(addImage(`http://localhost:5000/${src}`)); // adding new image to redux...
+          dispatch(addImage(src)); // adding new image to redux...
         }}
         type={"button"}
         value={"Add"}

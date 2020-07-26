@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import CanvasPeragraph from "./CanvasPeragraph";
 import { Transformer, Stage, Layer } from "react-konva";
 import { imageDelete } from "../../../redux/actions";
+import Waves from "../Animations/Waves";
+import Snow from "../Animations/Snow";
 import {
   CanvasTypes,
   ImageType,
@@ -40,8 +42,11 @@ const Canvas = () => {
           &#128465;
         </h1>
       ) : null}
+      {background.snow ? <Snow color={"white"} /> : null}
+      {background.waves ? <Waves /> : null}
+
       <Stage
-        className={"animation canvas "}
+        className={"canvas"}
         width={window.screen.width}
         height={3000}
         onMouseDown={(e) => deSelect(e)}

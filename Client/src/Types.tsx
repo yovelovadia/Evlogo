@@ -59,6 +59,8 @@ export interface BackgroundType {
   color4Active: boolean;
   degree: number;
   animated: boolean;
+  waves: boolean;
+  snow: boolean;
 }
 
 export interface CanvasTypes {

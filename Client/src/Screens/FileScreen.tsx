@@ -3,6 +3,8 @@ import fetchData from "../customeFunctions/fetchData";
 import { CanvasTypes } from "../Types";
 import Typist from "react-typist";
 import fadeInAnimation from "../customeFunctions/fadeInAnimation";
+import Waves from "../Components/Create/Animations/Waves";
+import Snow from "../Components/Create/Animations/Snow";
 
 const File: React.FC = (props: any) => {
   const [canvas, setCanvas] = useState<CanvasTypes | null>(null);
@@ -73,6 +75,8 @@ const File: React.FC = (props: any) => {
 
             {start ? (
               <React.Fragment>
+                {canvas.background.snow ? <Snow color={"white"} /> : null}
+                {canvas.background.waves ? <Waves /> : null}
                 {/* peragraph */}
                 <Typist>
                   <p
