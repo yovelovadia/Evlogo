@@ -9,7 +9,7 @@ const ImageCarousel: React.FC<{ userImages: boolean; refresh: boolean }> = (
   props
 ) => {
   const [images, setImages] = useState<any[]>([]);
- 
+
   // settings for carousel
   var settings = {
     dots: true,

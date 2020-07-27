@@ -42,7 +42,7 @@ const Canvas = () => {
           &#128465;
         </h1>
       ) : null}
-      {background.snow ? <Snow color={"white"} /> : null}
+      {background.snow ? <Snow /> : null}
       {background.waves ? <Waves /> : null}
 
       <Stage

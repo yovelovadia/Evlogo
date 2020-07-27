@@ -45,6 +45,7 @@ const PeragraphToolBar: React.FC = () => {
   const changeAtt = (peraValue: string | number, peraKey: string): void => {
     dispatch(peragraphChangeAtt(peraValue, peraKey));
   };
+  console.log("bla");
 
   return (
     <React.Fragment>

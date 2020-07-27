@@ -16,4 +16,4 @@ const Waves: React.FC = () => {
   );
 };
 
-export default Waves;
+export default React.memo(Waves);

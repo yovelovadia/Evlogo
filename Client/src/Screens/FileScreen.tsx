@@ -75,7 +75,7 @@ const File: React.FC = (props: any) => {
 
             {start ? (
               <React.Fragment>
-                {canvas.background.snow ? <Snow color={"white"} /> : null}
+                {canvas.background.snow ? <Snow /> : null}
                 {canvas.background.waves ? <Waves /> : null}
                 {/* peragraph */}
                 <Typist>

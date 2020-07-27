@@ -10,8 +10,6 @@ const ImageInCarousel: React.FC<Props> = (props) => {
   );
   let checkErrorHeppend = useRef<boolean>(false);
 
-  console.log(src);
-
   return (
     <div className={"imagesOnCarouselContainer "}>
       <img
@@ -20,7 +18,7 @@ const ImageInCarousel: React.FC<Props> = (props) => {
         alt={"Image not found"}
         onError={() => {
           if (!checkErrorHeppend.current) {
-            setSrc(src.slice(28));
+            setSrc(src.slice(22));
           }
           checkErrorHeppend.current = true;
         }}

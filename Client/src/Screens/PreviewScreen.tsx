@@ -79,7 +79,7 @@ const PreviewScreen: React.FC = () => {
         {/* will start only after song is loaded and starting to play */}
         {start ? (
           <React.Fragment>
-            {background.snow ? <Snow color={"white"} /> : null}
+            {background.snow ? <Snow /> : null}
             {background.waves ? <Waves /> : null}
             {/* peragraph */}
             <Typist ref={peragraphRef} show={false} avgTypingDelay={100}>
