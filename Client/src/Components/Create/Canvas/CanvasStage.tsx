@@ -1,20 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import CanvasImage from "./CanvasImage";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import CanvasPeragraph from "./CanvasPeragraph";
 import { Transformer, Stage, Layer } from "react-konva";
 import { imageDelete } from "../../../redux/actions";
-import { CanvasTypes, ImageType, Peragraph } from "../../../Types";
+import { Peragraph, ImageType } from "../../../Types";
 
-const CanvasStage: React.FC = () => {
-  const data: CanvasTypes = useSelector((state) => state.canvasReducer);
-  const images: { [key: string]: ImageType } = data.images;
-  const peragraph: Peragraph = data.peragraph;
+const CanvasStage: React.FC<{ images: ImageType; peragraph: Peragraph }> = ({
+  peragraph,
+  images,
+}) => {
   const [selectedElement, selectShape] = useState<any>(null);
   const [imageID, setImageID] = useState<null | string>(null);
   const dispatch: any = useDispatch();
-
-  console.log("bla");
 
   const deSelect = (event: any): void => {
     if (event.target === event.target.getStage()) {
@@ -22,10 +20,10 @@ const CanvasStage: React.FC = () => {
     }
   };
 
-  const deleteImage = () => {
+  const deleteImage = useCallback(() => {
     dispatch(imageDelete(imageID));
     selectShape(null);
-  };
+  }, [dispatch, imageID]);
 
   useEffect(() => {
     const deleteOnBackspace = (data) => {
@@ -38,7 +36,7 @@ const CanvasStage: React.FC = () => {
     return () => {
       document.body.removeEventListener("keydown", deleteOnBackspace);
     };
-  }, [imageID]);
+  }, [selectedElement, imageID, deleteImage]);
 
   return (
     <React.Fragment>

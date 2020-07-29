@@ -31,4 +31,4 @@ const BackgroundColorPicker: React.FC<ColorPickerProps> = (props) => {
   );
 };
 
-export default BackgroundColorPicker;
+export default React.memo(BackgroundColorPicker);

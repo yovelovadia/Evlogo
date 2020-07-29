@@ -117,4 +117,4 @@ const PeragraphToolBar: React.FC = () => {
     </React.Fragment>
   );
 };
-export default PeragraphToolBar;
+export default React.memo(PeragraphToolBar);

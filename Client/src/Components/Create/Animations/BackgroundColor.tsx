@@ -1,6 +1,5 @@
 import React from "react";
 import { BackgroundType } from "../../../Types";
-import { useSelector } from "react-redux";
 
 const BackgroundColor: React.FC<{ background: BackgroundType }> = ({
   background,
