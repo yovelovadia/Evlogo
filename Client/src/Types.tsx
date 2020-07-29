@@ -1,24 +1,3 @@
-export interface Props {
-  src?: string;
-  data?: any;
-  imageID?: string;
-}
-
-export interface ImageProps {
-  image: ImageType;
-  imageID: string;
-  dispatch: any;
-  selected: (data: any) => void;
-  selectedID: (id: string) => void;
-}
-
-export interface ColorPickerProps {
-  checked: boolean;
-  name: string;
-  activeName: string;
-  value: string;
-}
-
 export interface ImageType {
   src?: string;
   rotate?: number;
@@ -29,6 +8,13 @@ export interface ImageType {
   scaleX?: number;
   scaleY?: number;
   precentageWidth?: number;
+}
+
+export interface FetchedImages {
+  img: string;
+  userID: string;
+  _id: string;
+  _v: number;
 }
 
 export interface Peragraph {
@@ -42,11 +28,6 @@ export interface Peragraph {
   y?: number;
   dispatch?: any;
   textAlign?: string;
-}
-
-export interface PeragraphProps {
-  peragraph: Peragraph;
-  dispatch: any;
 }
 
 export interface BackgroundType {
@@ -76,11 +57,4 @@ export interface UserInfo {
   password: string;
   name?: string;
   admin?: boolean;
-}
-
-export interface TextInputProps {
-  name: string;
-  placeholder: string;
-  handleChange: (action: string, data?: string) => void;
-  type?: string;
 }

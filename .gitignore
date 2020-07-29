@@ -11,6 +11,9 @@ node_modules/
 # production
 /build
 
+# user/default images
+Backend/Assets/
+
 # misc
 .DS_Store
 .env.local

@@ -13,8 +13,8 @@ const convertToWebp = async (image) => {
   return sharp(image).webp().toBuffer();
 };
 
-const ImageComprassion = async (image) => {
-  const compress = await imagemin.buffer(image, {
+const ImageComprassion = (image) => {
+  const compress = imagemin.buffer(image, {
     plugins: [convertToWebp, imageminPngquant()], // from some reason using imagemin webp wont make image transparent so sticking with this for now
   });
   return compress;

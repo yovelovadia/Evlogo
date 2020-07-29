@@ -1,13 +1,16 @@
 import React, { useState, useRef } from "react";
-import { Props } from "../../../../Types";
 import { useDispatch } from "react-redux";
-import { addImage } from "../../../../redux/actions";
+import { addImage } from "../../../../../redux/actions";
+
+interface Props {
+  src?: string;
+  data?: any;
+  imageID?: string;
+}
 
 const ImageInCarousel: React.FC<Props> = (props) => {
   const dispatch: any = useDispatch();
-  const [src, setSrc] = useState<string>(
-    `http://evlogo.herokuapp.com/${props.src}`
-  );
+  const [src, setSrc] = useState<string>(`http://localhost:5000/${props.src}`);
   let checkErrorHeppend = useRef<boolean>(false);
 
   return (
@@ -18,7 +21,7 @@ const ImageInCarousel: React.FC<Props> = (props) => {
         alt={"#"}
         onError={() => {
           if (!checkErrorHeppend.current) {
-            setSrc(src.slice(28));
+            setSrc(src.slice(22));
           }
           checkErrorHeppend.current = true;
         }}

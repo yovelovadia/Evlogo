@@ -1,7 +1,13 @@
 import React from "react";
-import { TextInputProps } from "../../Types";
 
-const TextInput = (props): React.FunctionComponentElement<TextInputProps> => {
+export interface Props {
+  name: string;
+  placeholder: string;
+  handleChange: (action: string, data?: string) => void;
+  type?: string;
+}
+
+const TextInput = (props): React.FunctionComponentElement<Props> => {
   return (
     <label className="field a-field a-field_a2">
       <input

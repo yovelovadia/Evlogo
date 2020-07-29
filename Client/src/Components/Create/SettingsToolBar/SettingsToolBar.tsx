@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import ImageCarousel from "./Carousels/ImageCarousel";
 import PeragraphTextArea from "./peragraphTextArea/PeragraphTextArea";
-import UploadImage from "./UploadImage";
 import SongPick from "./SongPick";
 import Header from "./Header";
 import Background from "./Background/Background";
 import Finished from "./Finished";
 import { FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
+import StickersAndImages from "./StickersAndImages/StickersAndImages";
 
 // the settings bar container
 
 const SettingsToolBar: React.FC = () => {
-  const [refresh, setRefresh] = useState<boolean>(true);
   const [minimize, setMinimize] = useState<boolean>(false);
 
   return (
@@ -34,11 +32,7 @@ const SettingsToolBar: React.FC = () => {
         <h1 className={"sectionContainerHeader"}>
           <span>Stickers/Images</span>
         </h1>
-        <h2>Stickers</h2>
-        <ImageCarousel refresh={refresh} userImages={false} />
-        <h2>Your images</h2>
-        <ImageCarousel refresh={refresh} userImages={true} />
-        <UploadImage refresh={() => setRefresh(!refresh)} />
+        <StickersAndImages />
       </div>
       <div id={"song"} className={"sectionContainer"}>
         <h1 className={"sectionContainerHeader"}>

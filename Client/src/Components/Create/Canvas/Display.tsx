@@ -3,27 +3,21 @@ import { useSelector } from "react-redux";
 import Waves from "../Animations/Waves";
 import Snow from "../Animations/Snow";
 import BackgroundColor from "../Animations/BackgroundColor";
-import {
-  CanvasTypes,
-  BackgroundType,
-  Peragraph,
-  ImageType,
-} from "../../../Types";
+import * as Type from "../../../Types";
 import CanvasStage from "./CanvasStage";
 
 const Display = () => {
-  const data: CanvasTypes = useSelector((state) => state.canvasReducer);
-  const background: BackgroundType = data.background;
-  const peragraph: Peragraph = data.peragraph;
-  const images: { [key: string]: ImageType } = data.images;
+  const data: Type.CanvasTypes = useSelector((state) => state.canvasReducer);
+  const background: Type.BackgroundType = data.background;
+  const peragraph: Type.Peragraph = data.peragraph;
+  const images: { [key: string]: Type.ImageType } = data.images;
 
   return (
     <React.Fragment>
-      {/* all the animations and background color/animations */}
       <BackgroundColor background={background} />
+      <CanvasStage images={images} peragraph={peragraph} />
       {background.snow ? <Snow /> : null}
       {background.waves ? <Waves /> : null}
-      <CanvasStage images={images} peragraph={peragraph} />
     </React.Fragment>
   );
 };

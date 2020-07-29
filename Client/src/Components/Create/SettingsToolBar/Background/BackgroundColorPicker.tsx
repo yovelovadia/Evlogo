@@ -1,9 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { ColorPickerProps } from "../../../../Types";
 import { backgroundChangeAtt } from "../../../../redux/actions";
 
-const BackgroundColorPicker: React.FC<ColorPickerProps> = (props) => {
+export interface Props {
+  checked: boolean;
+  name: string;
+  activeName: string;
+  value: string;
+}
+
+const BackgroundColorPicker: React.FC<Props> = (props) => {
   const dispatch: any = useDispatch();
 
   const changeBgAtt = (bgKey: string, bgValue: string | boolean): void => {

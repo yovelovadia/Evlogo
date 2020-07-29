@@ -1,14 +1,23 @@
 import React, { useRef } from "react";
 import { Image as KonvaImage } from "react-konva";
-import { ImageType, ImageProps } from "../../../Types";
+import { ImageType } from "../../../Types";
 import { imageCordinates } from "../../../redux/actions";
 
-const CanvasImage: React.FC<ImageProps> = (props) => {
+interface Props {
+  image: ImageType;
+  imageID: string;
+  dispatch: any;
+  selected: (data: any) => void;
+  selectedID: (id: string) => void;
+}
+
+const CanvasImage: React.FC<Props> = (props) => {
+  const imageRef: React.MutableRefObject<any> = useRef();
   const dispatch = props.dispatch;
   const newImage: HTMLImageElement = new Image();
   newImage.src = props.image.src;
-  const imageRef: React.MutableRefObject<any> = useRef();
 
+  //after each time the user end dragging image will store all data in redux
   const storeCordInRedux = (data: any): void => {
     const x: number = data.currentTarget.attrs.x;
     const y: number = data.currentTarget.attrs.y;

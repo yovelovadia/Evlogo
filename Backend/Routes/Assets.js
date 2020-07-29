@@ -60,53 +60,39 @@ router.post(
   async (req, res, next) => {
     const userID = req.decoded.userID;
     const fileName = req.file.originalname;
+    const img = `Assets/usersImages/${userID}/${
+      fileName.split(".")[0] + ".webp"
+    }`;
+
+    if (fs.existsSync(img)) {
+      console.log("exists");
+      return res
+        .status(200)
+        .json({ message: "Image already exists", link: img });
+    }
+
+    // a prmoise
+    const compressionPromise = new Promise(async (resolve, reject) => {
+      const compressedImage = await imageComprassion(req.file.buffer); // comprassing the buffer and making it webp
+      req.file.buffer = compressedImage; //switching
+      fs.mkdirSync(`Assets/usersImages/${userID}`, { recursive: true }); //creates a dir if not exists
+      fs.writeFile(img, req.file.buffer, "base64", () => resolve("resolved"));
+    });
 
     try {
-      await imageComprassion(req.file.buffer) // comprassing the buffer and making it jpg
-        .then((compressedImage) => (req.file.buffer = compressedImage)) //switching
-        .then(
-          () =>
-            fs.mkdirSync(`Assets/usersImages/${userID}`, { recursive: true }) //creates a dir if not exists
-        )
-        .then(() => {
-          fs.writeFile(
-            `Assets/usersImages/${userID}/${fileName.slice(0, -3) + "webp"}`, //write the buffer to there
-            req.file.buffer,
-            "base64",
-            () => console.log("new image added")
-          );
-        });
-
-      const img = `Assets/usersImages/${userID}/${req.file.originalname.slice(
-        0,
-        -3
-      )}webp
-      `;
-
       const newImage = new imageSchema({
         userID,
         img,
       });
 
-      newImage
-        .save()
+      compressionPromise
+        .then(() => newImage.save()) //saves path in mongo
         .then(() =>
-          res
-            .status(200)
-            .json({ message: "Image uploaded", link: newImage.img })
-        ) // saving path in database
-        .catch((err) => {
-          if (err.name === "MongoError") {
-            res.status(409).json({
-              error: "Image name already exists, check again",
-              link: newImage.img,
-            });
-          }
-          res.status(500).json({ error: "Error occured try again" });
-        });
+          res.status(200).json({ message: "Image uploaded", link: img })
+        );
     } catch (err) {
       console.log(err);
-      res.status(500).json({ error: "Error occured try again" });
+      res.status(500).json({ error: "Error occured uploading image" });
     }
   }
 );

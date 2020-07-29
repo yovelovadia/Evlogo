@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import fetchData from "../../../customeFunctions/fetchData";
+import fetchData from "../../../../../customeFunctions/fetchData";
 import { useDispatch } from "react-redux";
-import { addImage } from "../../../redux/actions";
+import { addImage } from "../../../../../redux/actions";
+import LoadingIndicator from "../../../../Both/LoadingIndicator";
 
-const UploadImage: React.FC<{ refresh: () => void }> = (props) => {
-  const dispatch = useDispatch();
+const UploadImage: React.FC = () => {
   const [image, setImage] = useState<any>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
-  const [message, setMessage] = useState<string | null>(null);
+  const [message, setMessage] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const upload = (image: React.ChangeEvent<HTMLInputElement>): void => {
     const upload: File = image.target.files[0];
@@ -15,64 +16,31 @@ const UploadImage: React.FC<{ refresh: () => void }> = (props) => {
   };
 
   const submit = async (): Promise<void> => {
+    setLoading(true);
     try {
       const data: FormData = new FormData();
       data.append("image", image);
-      const response = await fetchData(
+      const response: any = await fetchData(
         "http://localhost:5000/assets/uploadImage",
         "post",
         data
       );
+      setLoading(false);
       setMessage(response.data.message);
       setImage(null);
-      props.refresh();
     } catch (err) {
       if (err.response) {
         setMessage(err.response.data.error);
+      } else {
+        setMessage("Error occured");
       }
+      setLoading(false);
     }
   };
-  //uploading files by dragging on screen and placing them ///////////////////////////////////////////////////// neeeeed fix asap
-  const uploadByDrag = async (droppedImage: any): Promise<void> => {
-    try {
-      const data: FormData = new FormData();
-      data.append("image", droppedImage);
-      const response = await fetchData(
-        "http://localhost:5000/assets/uploadImage",
-        "post",
-        data
-      );
-      const link: string = response.data.link;
-      dispatch(addImage(`http://localhost:5000/${link}`));
-      console.log("nigger");
-      setMessage(response.data.message);
-    } catch (err) {
-      if (err.response?.data) {
-        const link: string = err.response.data.link;
-        dispatch(addImage(`http://localhost:5000/${link}`));
-      }
-    }
-  };
-  //uploading images by dragging them on screen
-  useEffect(() => {
-    const pageContainer = document.getElementById("pageContainer");
-    pageContainer.addEventListener("dragover", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-    });
-    pageContainer.addEventListener("drop", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      uploadByDrag(event.dataTransfer.files[0]);
-    });
-    pageContainer.addEventListener("dragleave", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-    });
-  });
 
   //upload by url link
   const submitUrl = async (): Promise<void> => {
+    setLoading(true);
     try {
       const response = await fetchData(
         "http://localhost:5000/assets/uploadUrlImage",
@@ -82,12 +50,15 @@ const UploadImage: React.FC<{ refresh: () => void }> = (props) => {
         }
       );
       setMessage(response.data.message);
-      props.refresh();
       setImageUrl(null);
+      setLoading(false);
     } catch (err) {
       if (err.response) {
         setMessage(err.response.data.error);
+      } else {
+        setMessage("Error occured");
       }
+      setLoading(false);
     }
   };
 
@@ -133,7 +104,7 @@ const UploadImage: React.FC<{ refresh: () => void }> = (props) => {
           name={"image"}
         />
       </div>
-      <h1>{message}</h1>
+      {loading ? <LoadingIndicator color={"black"} /> : <h1>{message}</h1>}
     </React.Fragment>
   );
 };

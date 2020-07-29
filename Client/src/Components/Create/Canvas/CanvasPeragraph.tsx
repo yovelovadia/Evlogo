@@ -1,7 +1,12 @@
 import React from "react";
 import { Text } from "react-konva";
-import { PeragraphProps } from "../../../Types";
+import { Peragraph } from "../../../Types";
 import { peragraphCordinates } from "../../../redux/actions";
+
+export interface PeragraphProps {
+  peragraph: Peragraph;
+  dispatch: any;
+}
 
 const CanvasPeragraph: React.FC<PeragraphProps> = ({ peragraph, dispatch }) => {
   const storeCordInRedux = (data: any): void => {

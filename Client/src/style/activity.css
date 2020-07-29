@@ -262,6 +262,13 @@ a {
   width: 95%;
   max-height: 15vh;
   box-shadow: 2px 2px 4px black;
+  -webkit-filter: grayscale(25%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(25%);
+}
+
+.imagesOnCarousel:hover {
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
 }
 
 .imagesOnCarouselContainer:hover > .addStickerButton {
@@ -536,6 +543,14 @@ a {
 }
 
 .toolBar::-webkit-scrollbar-thumb {
+  background-color: var(--main-lighter-black);
+  border-radius: 10px;
+}
+.previewContainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+.previewContainer::-webkit-scrollbar-thumb {
   background-color: var(--main-lighter-black);
   border-radius: 10px;
 }
