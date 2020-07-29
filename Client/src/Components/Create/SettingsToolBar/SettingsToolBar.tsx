@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ImageCarousel from "./Carousels/ImageCarousel";
 import PeragraphTextArea from "./peragraphTextArea/PeragraphTextArea";
 import UploadImage from "./UploadImage";

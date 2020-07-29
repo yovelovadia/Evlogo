@@ -50,6 +50,7 @@ export interface PeragraphProps {
 }
 
 export interface BackgroundType {
+  windowHeight: number | null;
   color1: string;
   color2: string;
   color2Active: boolean;

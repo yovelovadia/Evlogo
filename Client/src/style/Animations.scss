@@ -21,7 +21,7 @@
 
 .snow {
   $total: 170;
-  position: absolute;
+  position: fixed;
   width: 10px;
   height: 10px;
   background: rgb(255, 255, 255);
@@ -33,7 +33,7 @@
     $random-x-end: $random-x + $random-offset;
     $random-x-end-yoyo: $random-x + ($random-offset / 2);
     $random-yoyo-time: random_range(30000, 80000) / 100000;
-    $random-yoyo-y: $random-yoyo-time * 300vh;
+    $random-yoyo-y: $random-yoyo-time * 100vh;
     $random-scale: random(10000) * 0.0001;
     $fall-duration: random_range(10, 40) * 1s;
     $fall-delay: random(30) * -1s;
@@ -50,7 +50,7 @@
       }
 
       to {
-        transform: translate($random-x-end-yoyo, 300vh) scale($random-scale);
+        transform: translate($random-x-end-yoyo, 100vh) scale($random-scale);
       }
     }
   }
@@ -63,6 +63,7 @@
   bottom: 0;
   width: 200%;
   height: 25%;
+  z-index: 1;
   background-repeat: repeat no-repeat;
   background-position: 0 bottom;
   transform-origin: center bottom;

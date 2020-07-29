@@ -4,6 +4,7 @@ import fetchData from "../customeFunctions/fetchData";
 import { UserInfo } from "../Types";
 import TextInput from "../Components/Home/TextInput";
 import GoogleLogin from "react-google-login";
+import LoadingIndicator from "../Components/Both/LoadingIndicator";
 
 const SignUpScreen: React.FC = () => {
   const history = useHistory();
@@ -87,12 +88,7 @@ const SignUpScreen: React.FC = () => {
           </div>
         </form>
         {loading ? (
-          <div className="loadingIndicator">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+          <LoadingIndicator color={"black"} />
         ) : (
           <input
             className={"submitButton submitButtonHome"}

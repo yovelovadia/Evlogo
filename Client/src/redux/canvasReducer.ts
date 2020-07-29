@@ -17,6 +17,7 @@ const initialState: CanvasTypes = {
   },
   song: "",
   background: {
+    windowHeight: null,
     color1: "#ee7752",
     color2: "#e73c7e",
     color2Active: true,
@@ -27,7 +28,7 @@ const initialState: CanvasTypes = {
     degree: 90,
     animated: true,
     waves: true,
-    snow: true,
+    snow: false,
   },
 };
 

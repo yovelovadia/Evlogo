@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CanvasTypes } from "../../../Types";
 import fetchData from "../../../customeFunctions/fetchData";
+import LoadingIndicator from "../../Both/LoadingIndicator";
 import { useSelector } from "react-redux";
 
 const Finished: React.FC = () => {
@@ -40,14 +41,7 @@ const Finished: React.FC = () => {
         />
       )}
 
-      {loading ? (
-        <div className="loadingIndicator">
-          <div style={{ backgroundColor: "white" }}></div>
-          <div style={{ backgroundColor: "white" }}></div>
-          <div style={{ backgroundColor: "white" }}></div>
-          <div></div>
-        </div>
-      ) : null}
+      {loading ? <LoadingIndicator color={"white"} /> : null}
     </div>
   );
 };

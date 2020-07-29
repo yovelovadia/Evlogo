@@ -30,4 +30,4 @@ const CanvasPeragraph: React.FC<PeragraphProps> = ({ peragraph, dispatch }) => {
   );
 };
 
-export default CanvasPeragraph;
+export default React.memo(CanvasPeragraph);

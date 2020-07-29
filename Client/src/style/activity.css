@@ -14,18 +14,14 @@ body {
   font-family: Saira Condensed;
 }
 
-.canvas {
-  overflow-x: hidden;
-}
-
 /* overAll classes */
 
-.trashCan {
+.backgroundColors {
   position: fixed;
-  cursor: pointer;
-  z-index: 1;
-  margin: 20px;
-  font-size: 40px;
+  width: 100vw;
+  min-height: 100vh;
+  z-index: -1;
+  height: auto;
 }
 
 input[type="button"] {
@@ -117,7 +113,20 @@ a {
   padding: 0;
 }
 
-/* BleesingMaker toolbar */
+/*canvas*/
+.canvas {
+  overflow-x: hidden;
+}
+
+.trashCan {
+  position: fixed;
+  cursor: pointer;
+  z-index: 1;
+  margin: 20px;
+  font-size: 40px;
+}
+
+/* toolbar */
 
 .toolBar {
   position: fixed;
@@ -127,7 +136,7 @@ a {
   right: 0;
   display: flex;
   flex-direction: column;
-  z-index: 1;
+  z-index: 2;
   box-shadow: 1px 0px 15px 2px rgb(0, 0, 0);
   background-color: white;
   opacity: 0.9;
@@ -448,10 +457,6 @@ a {
 }
 
 /* preview screen */
-.previewBackground {
-  position: fixed;
-  width: 100vw;
-}
 
 .previewContainer {
   height: auto;

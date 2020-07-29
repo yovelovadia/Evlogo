@@ -1,68 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CanvasImage from "./CanvasImage";
 import { useSelector, useDispatch } from "react-redux";
 import CanvasPeragraph from "./CanvasPeragraph";
 import { Transformer, Stage, Layer } from "react-konva";
 import { imageDelete } from "../../../redux/actions";
-import Waves from "../Animations/Waves";
-import Snow from "../Animations/Snow";
-import {
-  CanvasTypes,
-  ImageType,
-  Peragraph,
-  BackgroundType,
-} from "../../../Types";
+import { CanvasTypes, ImageType, Peragraph } from "../../../Types";
 
-const Canvas = () => {
+const CanvasStage: React.FC = () => {
   const data: CanvasTypes = useSelector((state) => state.canvasReducer);
   const images: { [key: string]: ImageType } = data.images;
   const peragraph: Peragraph = data.peragraph;
-  const background: BackgroundType = data.background;
   const [selectedElement, selectShape] = useState<any>(null);
   const [imageID, setImageID] = useState<null | string>(null);
   const dispatch: any = useDispatch();
 
-  const deSelect = (event) => {
+  console.log("bla");
+
+  const deSelect = (event: any): void => {
     if (event.target === event.target.getStage()) {
       selectShape(null);
     }
   };
 
+  const deleteImage = () => {
+    dispatch(imageDelete(imageID));
+    selectShape(null);
+  };
+
+  useEffect(() => {
+    const deleteOnBackspace = (data) => {
+      if (imageID && data.key === "Backspace") {
+        deleteImage();
+      }
+    };
+
+    document.body.addEventListener("keydown", deleteOnBackspace);
+    return () => {
+      document.body.removeEventListener("keydown", deleteOnBackspace);
+    };
+  }, [imageID]);
+
   return (
     <React.Fragment>
       {/* trash can will be shown only when element will be selected and will delete by the id taken */}
       {selectedElement ? (
-        <h1
-          onClick={() => {
-            dispatch(imageDelete(imageID));
-            selectShape(null);
-          }}
-          className={"trashCan"}
-        >
+        <h1 onClick={deleteImage} className={"trashCan"}>
           &#128465;
         </h1>
       ) : null}
-      {background.snow ? <Snow /> : null}
-      {background.waves ? <Waves /> : null}
 
       <Stage
         className={"canvas"}
         width={window.screen.width}
         height={3000}
         onMouseDown={(e) => deSelect(e)}
-        style={{
-          backgroundImage: `linear-gradient(${background.degree}deg, ${
-            background.color1
-          } ${
-            background.color2Active
-              ? "," + background.color2
-              : "," + background.color1
-          } ${background.color3Active ? "," + background.color3 : ""}${
-            background.color4Active ? "," + background.color4 : ""
-          })`, //background image for dodging conflicts instead of background:
-          backgroundSize: background.animated ? "400% 400%" : null,
-          animation: background.animated ? "gradient 10s ease infinite" : null,
-        }}
       >
         <Layer>
           {Object.keys(images).map((item) => (
@@ -98,4 +89,4 @@ const Canvas = () => {
   );
 };
 
-export default Canvas;
+export default React.memo(CanvasStage);

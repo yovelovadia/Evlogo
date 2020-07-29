@@ -30,7 +30,7 @@ const ImageCarousel: React.FC<{ userImages: boolean; refresh: boolean }> = (
       setImages(data.data);
     };
     getImages();
-  }, [props.refresh]);
+  }, [props.refresh, props.userImages]);
 
   return (
     <div className={"backgroudCarousel grab"}>

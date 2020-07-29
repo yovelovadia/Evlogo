@@ -7,11 +7,11 @@ const Snow: React.FC = () => {
   }
 
   return (
-    <React.Fragment>
+    <div>
       {snowList.map((item) => (
         <div key={item} className={"snow"} />
       ))}
-    </React.Fragment>
+    </div>
   );
 };
 

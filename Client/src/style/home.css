@@ -1,5 +1,6 @@
 :root {
   --light-blue: rgb(125, 205, 252);
+  --light-black: rgb(30, 30, 30);
 }
 
 body {
@@ -27,6 +28,7 @@ h5 {
 }
 
 /* starter */
+
 .homeImage {
   width: 100vw;
   height: 100vh;
@@ -74,18 +76,23 @@ h5 {
   color: white;
   font-size: 1.4em;
 }
+.coolAnimatedButtonBottom {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  margin-bottom: 30px;
+}
 
 /* title */
 .titleContainer {
   position: absolute;
-  left: 50%;
-  transform: translate(-50%);
+  width: 100%;
   text-align: center;
 }
 
 .title {
   color: white;
-  font-size: 8em;
+  font-size: 110px;
   font-family: Farsan;
 }
 
@@ -103,23 +110,111 @@ h5 {
 }
 
 .iconsContainer {
-  position: absolute;
+  position: relative;
   left: 50%;
   transform: translate(-50%);
   display: flex;
   justify-content: space-between;
   width: 70%;
-  margin-bottom: 100vh;
   text-align: center;
 }
 
 .iconHeader {
-  font-size: 26px;
+  font-size: 29px;
   padding: 14px 0;
+  font-weight: 700;
 }
 
 .iconPeragraph {
   font-size: 20px;
+}
+
+.horizontalSapartorLine {
+  display: flex;
+}
+
+.horizontalSapartorLine div {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: black;
+  width: 70%;
+  height: 2px;
+  opacity: 0.7;
+  margin: 80px 0;
+}
+
+.stagImage {
+  position: absolute;
+  width: 250px;
+}
+
+/*Description area */
+
+.descriptionContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding: 100px 0;
+}
+
+.descriptionContainer h1 {
+  font-size: 40px;
+  width: 30%;
+  line-height: 70px;
+  letter-spacing: 0.145em;
+}
+
+.descriptionContainerRed {
+  background: #ffdddd;
+}
+
+.doubleImageContainer {
+  position: relative;
+  width: 520px;
+  height: 340px;
+}
+
+.doubleImage {
+  position: absolute;
+  width: 77%;
+  border: 6px solid var(--light-black);
+  border-radius: 3px;
+  box-shadow: 15px 15px 20px 2px rgba(0, 0, 0, 0.45),
+    inset 20px 20px 40px 9px rgba(0, 0, 0, 0.25);
+}
+
+.doubleImagePosition2 {
+  top: 70px;
+  left: 70px;
+  z-index: -1;
+}
+
+.singleImage {
+  width: 520px;
+  border: 6px solid var(--light-black);
+  border-radius: 26px;
+  box-shadow: -15px 15px 20px 5px rgba(0, 0, 0, 0.45),
+    inset -20px 20px 40px 9px rgba(0, 0, 0, 0.25);
+}
+.imageReverseShadow {
+  box-shadow: 15px 15px 20px 5px rgba(0, 0, 0, 0.45),
+    inset 20px 20px 40px 9px rgba(0, 0, 0, 0.25);
+}
+
+/* footer */
+.footer {
+  position: relative;
+  width: 100vw;
+  height: 100px;
+  background-color: var(--light-black);
+}
+
+.footer h1 {
+  position: absolute;
+  color: white;
+  bottom: 0;
+  left: 40px;
 }
 
 /*signup and login screens*/
@@ -383,5 +478,69 @@ h5 {
   }
   100% {
     transform: translate(24px, 0);
+  }
+}
+
+@media only screen and (max-width: 1015px) {
+  .homeAnimatedButton {
+  }
+  .links {
+    flex-direction: column-reverse;
+    align-items: center;
+    width: unset;
+  }
+}
+
+@media only screen and (max-width: 814px) {
+  .title {
+    font-size: 80px;
+  }
+
+  .subTitle {
+    font-size: 35px;
+  }
+
+  .iconsContainer {
+    flex-direction: column;
+    height: 850px;
+  }
+
+  .stagImage {
+    width: 150px;
+  }
+
+  .descriptionContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .descriptionContainerRed {
+    flex-direction: column;
+  }
+
+  .descriptionContainer h1 {
+    width: 80%;
+    text-align: center;
+    font-size: 25px;
+  }
+
+  .singleImage,
+  .doubleImageContainer {
+    margin-bottom: 40px;
+  }
+
+  .doubleImageContainer {
+    height: 200px;
+  }
+
+  .doubleImageContainer,
+  .singleImage {
+    width: 85%;
+    align-self: center;
+  }
+
+  .singleImage,
+  .imageReverseShadow {
+    box-shadow: 0px 10px 7px 5px rgba(0, 0, 0, 0.55),
+      inset 20px 20px 40px 10px rgba(0, 0, 0, 0.25);
   }
 }

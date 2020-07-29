@@ -16,5 +16,8 @@
     "jsx": "react",
     "sourceMap": true
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "src/Components/Create/Animations/BackgroundColor.tsx/.tsx"
+  ]
 }

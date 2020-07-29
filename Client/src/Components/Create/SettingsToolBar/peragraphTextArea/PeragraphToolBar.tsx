@@ -1,34 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Peragraph } from "../../../../Types";
+import FontSelector from "./FontsSelector";
 import {
   MdFormatAlignRight,
   MdFormatAlignLeft,
   MdFormatAlignCenter,
 } from "react-icons/md";
 import { peragraphChangeAtt } from "../../../../redux/actions";
-
-const fonts: string[] = [
-  "Ariel",
-  "cursive",
-  "sans-serif",
-  "Amatic SC",
-  "Anton",
-  "Caveat",
-  "Chewy",
-  "Courgette",
-  "Cousine",
-  "Dancing Script",
-  "Modak",
-  "Permanent Marker",
-  "Ranchers",
-  "Rubik",
-  "Secular One",
-  "Suez One",
-  "Indie Flower",
-  "Farsan",
-  "Saira Condensed",
-];
 
 const PeragraphToolBar: React.FC = () => {
   const dispatch: any = useDispatch();
@@ -45,14 +24,13 @@ const PeragraphToolBar: React.FC = () => {
   const changeAtt = (peraValue: string | number, peraKey: string): void => {
     dispatch(peragraphChangeAtt(peraValue, peraKey));
   };
-  console.log("bla");
 
   return (
     <React.Fragment>
       <div className={"peragraphToolBarContainer"}>
         <div className={"textAlignContainer"}>
           <div>
-            <input
+            <input // align text left
               className={"textAlignRadio"}
               type={"radio"}
               name={"textAlign"}
@@ -66,7 +44,7 @@ const PeragraphToolBar: React.FC = () => {
             />
           </div>
           <div>
-            <input
+            <input // align text center
               className={"textAlignRadio"}
               type={"radio"}
               name={"textAlign"}
@@ -81,7 +59,7 @@ const PeragraphToolBar: React.FC = () => {
             />
           </div>
           <div>
-            <input
+            <input // align text right
               className={"textAlignRadio"}
               type={"radio"}
               name={"textAlign"}
@@ -97,7 +75,7 @@ const PeragraphToolBar: React.FC = () => {
           </div>
         </div>
 
-        <input
+        <input //text color
           type={"color"}
           className={"colorPicker"}
           onChange={(data) => {
@@ -105,19 +83,11 @@ const PeragraphToolBar: React.FC = () => {
           }}
           value={color}
         />
-        <select
-          className={"fontFamilySelector"}
-          value={fontFamily}
-          onChange={(data) => changeAtt(data.target.value, "fontFamily")}
-        >
-          {fonts.map((font) => (
-            <option key={font} style={{ fontFamily: font }} value={font}>
-              {font}
-            </option>
-          ))}
-        </select>
+        <FontSelector
+          changeAtt={(value, attName) => changeAtt(value, attName)}
+          fontFamily={fontFamily}
+        />
       </div>
-
       <div className={"numbersInputContainer"}>
         <input
           type={"number"}
