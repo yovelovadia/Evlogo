@@ -11,7 +11,6 @@ const Display = () => {
   const background: Type.BackgroundType = data.background;
   const peragraph: Type.Peragraph = data.peragraph;
   const images: { [key: string]: Type.ImageType } = data.images;
-
   return (
     <React.Fragment>
       <BackgroundColor background={background} />
