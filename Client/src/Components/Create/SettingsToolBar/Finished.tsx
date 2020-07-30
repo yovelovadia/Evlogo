@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CanvasTypes } from "../../../Types";
 import fetchData from "../../../customeFunctions/fetchData";
-import LoadingIndicator from "../../Both/LoadingIndicator";
+import LoadingIndicator from "../../ReusableComponents/LoadingIndicator";
 import { useSelector } from "react-redux";
 
 const Finished: React.FC = () => {

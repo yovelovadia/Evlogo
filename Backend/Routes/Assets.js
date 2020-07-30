@@ -1,6 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 const imageSchema = require("../Schemas/imageSchema");
+const defaultImageSchema = require("../Schemas/defaultImageSchema");
 const checkJWT = require("../Functions/checkJWT");
 const imageComprassion = require("../Functions/ImageComprassion");
 const fs = require("fs");
@@ -16,10 +17,9 @@ router.use("/", express.static("Assets/")); // serve default images
 //getting all the default images
 router.get("/getDefaultImages", (req, res, next) => {
   try {
-    imageSchema
-      .find({ userID: "default" })
-      .then((data) => res.status(200).json(data));
+    defaultImageSchema.find().then((data) => res.status(200).json(data));
   } catch (err) {
+    res.status(500).json({ message: "Error occured" });
     console.log(err);
   }
 });

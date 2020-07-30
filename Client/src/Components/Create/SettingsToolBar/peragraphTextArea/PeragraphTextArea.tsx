@@ -8,7 +8,9 @@ import { peragraphChangeAtt } from "../../../../redux/actions";
 
 const PeragraphTextArea: React.FC = () => {
   const dispatch: any = useDispatch();
-  const data: Peragraph = useSelector((state) => state.canvasReducer.peragraph);
+  const data: Peragraph = useSelector(
+    (state) => state.canvasReducer.peragraph.text
+  );
   const text: string = data.text;
   const align: string = data.textAlign;
 
@@ -34,4 +36,4 @@ const PeragraphTextArea: React.FC = () => {
   );
 };
 
-export default PeragraphTextArea;
+export default React.memo(PeragraphTextArea);

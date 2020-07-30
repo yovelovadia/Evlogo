@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { CanvasTypes } from "../../../Types";
 import PeragraphTextArea from "./peragraphTextArea/PeragraphTextArea";
 import SongPick from "./SongPick";
 import Header from "./Header";
@@ -6,6 +7,7 @@ import Background from "./Background/Background";
 import Finished from "./Finished";
 import { FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
 import StickersAndImages from "./StickersAndImages/StickersAndImages";
+import SectionContainer from "../../ReusableComponents/SectionContainer";
 
 // the settings bar container
 
@@ -15,31 +17,23 @@ const SettingsToolBar: React.FC = () => {
   return (
     <div className={"toolBar"} style={{ width: minimize ? "0px" : "30%" }}>
       <Header />
-      <div id={"background"} className={"sectionContainer"}>
-        <h1 className={"sectionContainerHeader"}>
-          <span>Background</span>
-        </h1>
+      <SectionContainer id={"Background"}>
         <Background />
-      </div>
+      </SectionContainer>
 
-      <div id={"text"} className={"sectionContainer"}>
-        <h1 className={"sectionContainerHeader"}>
-          <span>Text</span>
-        </h1>
+      <SectionContainer id={"Text"}>
         <PeragraphTextArea />
-      </div>
-      <div id={"images"} className={"sectionContainer"}>
-        <h1 className={"sectionContainerHeader"}>
-          <span>Stickers/Images</span>
-        </h1>
+      </SectionContainer>
+
+      <SectionContainer id={"Images"}>
         <StickersAndImages />
-      </div>
-      <div id={"song"} className={"sectionContainer"}>
-        <h1 className={"sectionContainerHeader"}>
-          <span>Song</span>
-        </h1>
+      </SectionContainer>
+
+      <SectionContainer id={"Song"}>
         <SongPick />
-      </div>
+      </SectionContainer>
+
+      <Finished />
 
       <div
         onClick={() => {
@@ -54,7 +48,6 @@ const SettingsToolBar: React.FC = () => {
           <FiChevronsRight size={35} />
         )}
       </div>
-      <Finished />
     </div>
   );
 };

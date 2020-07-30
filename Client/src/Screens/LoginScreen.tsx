@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import fetchData from "../customeFunctions/fetchData";
 import { UserInfo } from "../Types";
-import TextInput from "../Components/Home/TextInput";
+import TextInput from "../Components/ReusableComponents/TextInput";
 import GoogleLogin from "react-google-login";
-import LoadingIndicator from "../Components/Both/LoadingIndicator";
+import LoadingIndicator from "../Components/ReusableComponents/LoadingIndicator";
 
 const LoginScreen: React.FC = () => {
   const history = useHistory();

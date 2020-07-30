@@ -16,21 +16,21 @@ const Header = () => {
           <span>Preview</span>
         </div>
       </Link>
-      <a href={"#background"} className={"headerIcons"}>
+      <a href={"#Background"} className={"headerIcons"}>
         <MdImage size={40} color={"black"} />
         <div className={"headerIconsBubble"}>Background</div>
       </a>
-      <a href={"#text"} className={"headerIcons"}>
+      <a href={"#Text"} className={"headerIcons"}>
         <MdEdit size={40} color={"black"} />
         <div className={"headerIconsBubble"}>Peragraph</div>
       </a>
 
-      <a href={"#images"} className={"headerIcons"}>
+      <a href={"#Images"} className={"headerIcons"}>
         <MdLinkedCamera size={40} color={"black"} />
         <div className={"headerIconsBubble"}>Images</div>
       </a>
 
-      <a href={"#song"} className={"headerIcons"}>
+      <a href={"#Song"} className={"headerIcons"}>
         <MdVolumeUp size={40} color={"black"} />
         <div className={"headerIconsBubble"}>Song</div>
       </a>

@@ -19,7 +19,7 @@ const FontSelector: React.FC<{
   );
 };
 
-export default FontSelector;
+export default React.memo(FontSelector);
 
 const fonts: string[] = [
   "Ariel",

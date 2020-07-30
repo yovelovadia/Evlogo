@@ -3,12 +3,13 @@ import { useDispatch } from "react-redux";
 import { songUrl } from "../../../redux/actions";
 
 const SongPick = () => {
+  const dispatch: any = useDispatch();
   const [song, setSong] = useState<{
     url: string;
     timeStart: string | undefined;
   }>({ url: "", timeStart: undefined });
   const [message, setMessage] = useState<string>("");
-  const dispatch: any = useDispatch();
+
   return (
     <div className={"songContainer"}>
       <input

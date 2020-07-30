@@ -5,6 +5,7 @@ import fetchData from "../../../../customeFunctions/fetchData";
 import useUploadByDrag from "./imageUpload/useUploadByDrag";
 import { FetchedImages } from "../../../../Types";
 
+// prettier-ignore
 const StickersAndImages: React.FC = () => {
   const [userImages, setUserImages] = useState<FetchedImages[] | null>(null);
   const [defaultImages, setDefaultImages] = useState<FetchedImages[] | null>(
@@ -18,13 +19,18 @@ const StickersAndImages: React.FC = () => {
     return response.data;
   };
 
-  useEffect(() => {
+  const fetchToState = React.useCallback(async (url, isUserImages): Promise<any> => {
+    console.log("rindur");
     let mounted: boolean = true;
     if (mounted) {
       try {
-        getImages(
-          "http://localhost:5000/Assets/getDefaultImages"
-        ).then((images) => setDefaultImages(images));
+        getImages(url).then((images) => {
+          if (isUserImages) {
+            setUserImages(images);
+          } else {
+            setDefaultImages(images);
+          }
+        });
       } catch (err) {
         console.log(err);
       }
@@ -33,24 +39,17 @@ const StickersAndImages: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    let mounted: boolean = true;
-    if (mounted) {
-      try {
-        getImages("http://localhost:5000/Assets/getUserImages").then((images) =>
-          setUserImages(images)
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    return () => (mounted = false);
+    fetchToState("http://localhost:5000/Assets/getDefaultImages", false);
+    fetchToState("http://localhost:5000/Assets/getUserImages", true);
   }, []);
+
+
 
   return (
     <React.Fragment>
       <ImageCarousel images={defaultImages} />
       <ImageCarousel images={userImages} />
-      <UploadImage />
+      <UploadImage fetchToState={fetchToState} />
     </React.Fragment>
   );
 };

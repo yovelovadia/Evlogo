@@ -4,7 +4,7 @@ import Waves from "../Animations/Waves";
 import Snow from "../Animations/Snow";
 import BackgroundColor from "../Animations/BackgroundColor";
 import * as Type from "../../../Types";
-import CanvasStage from "./CanvasStage";
+import CanvasStage from "./CanvasContainer";
 
 const Display = () => {
   const data: Type.CanvasTypes = useSelector((state) => state.canvasReducer);
@@ -21,4 +21,4 @@ const Display = () => {
   );
 };
 
-export default Display;
+export default React.memo(Display);
