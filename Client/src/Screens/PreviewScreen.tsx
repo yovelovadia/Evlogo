@@ -64,14 +64,10 @@ const PreviewScreen: React.FC = () => {
 
       {start ? (
         <React.Fragment>
-          {/* {background.particles ? (
-            <Particles
-              count={background.particlesCount}
-              type={background.particlesType}
-              size={background.particlesSize}
-            />
-          ) : null} */}
-          {background.waves ? <Waves /> : null}
+          {background.particles.state ? (
+            <Particles particles={background.particles} />
+          ) : null}
+          {background.particles.waves ? <Waves /> : null}
           {/* peragraph */}
           <Typist ref={peragraphRef} show={false} avgTypingDelay={100}>
             <p

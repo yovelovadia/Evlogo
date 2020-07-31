@@ -19,7 +19,7 @@ const Display = () => {
       {background.particles.state ? (
         <Particles particles={background.particles} />
       ) : null}
-      {background.waves ? <Waves /> : null}
+      {background.particles.waves ? <Waves /> : null}
     </React.Fragment>
   );
 };

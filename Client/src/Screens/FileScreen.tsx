@@ -22,7 +22,7 @@ const File: React.FC = (props: any) => {
         `http://localhost:5000/files/serve/${_id}`,
         "get"
       );
-      setCanvas(response.data.canvas);
+      setCanvas(response.data.canvas); //// work on that later...
       if (response.data.canvas.song.length < 5) {
         setStart(true);
       }
@@ -46,7 +46,7 @@ const File: React.FC = (props: any) => {
           }}
           width={"0"}
           height={"0"}
-          src={canvas.song}
+          src={canvas?.song}
           frameBorder={"0"}
           allow={"autoplay"}
           title={"song"}
@@ -54,14 +54,10 @@ const File: React.FC = (props: any) => {
 
         {start ? (
           <React.Fragment>
-            {/* {canvas.background.particles ? (
-              <Particles
-                count={canvas.background.particlesCount}
-                type={canvas.background.particlesType}
-                size={canvas.background.particlesSize}
-              />
-            ) : null} */}
-            {canvas.background.waves ? <Waves /> : null}
+            {canvas.background.particles.state ? (
+              <Particles particles={canvas.background.particles} />
+            ) : null}
+            {canvas.background.particles.waves ? <Waves /> : null}
             {/* peragraph */}
             <Typist>
               <p

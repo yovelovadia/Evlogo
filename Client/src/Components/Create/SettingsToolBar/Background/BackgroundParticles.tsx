@@ -17,6 +17,13 @@ const BackgroundParticles: React.SFC<Props> = ({
 }) => {
   return (
     <React.Fragment>
+      <input // temporary position
+        checked={particles.waves}
+        type={"checkbox"}
+        onChange={() => changeBackgroundAtt("waves", !particles.waves)}
+      />
+      <h3>Waves?</h3>
+
       <input
         checked={particles.state}
         type={"checkbox"}
@@ -24,44 +31,48 @@ const BackgroundParticles: React.SFC<Props> = ({
       />
       <h3>Particles?</h3>
 
-      <Slider
-        max={150}
-        attName={"count"}
-        value={particles.count}
-        changeBgAtt={changeBackgroundAtt}
-      />
-      <Slider
-        max={200}
-        attName={"size"}
-        value={particles.size}
-        changeBgAtt={changeBackgroundAtt}
-      />
-      <ColorPicker
-        name={"color"}
-        onChange={changeBackgroundAtt}
-        value={particles.color}
-      />
-      <input
-        checked={particles.type === "snow"}
-        type={"radio"}
-        name={"type"}
-        onClick={() => changeBackgroundAtt("type", "snow")}
-      />
-      <h3>Circle</h3>
-      <input
-        checked={particles.type === "squere"}
-        type={"radio"}
-        name={"type"}
-        onClick={() => changeBackgroundAtt("type", "squere")}
-      />
-      <h3>Squere</h3>
-      <input
-        checked={particles.type === "heart"}
-        name={"type"}
-        type={"radio"}
-        onClick={() => changeBackgroundAtt("type", "heart")}
-      />
-      <h3>Heart</h3>
+      {particles.state ? (
+        <React.Fragment>
+          <Slider
+            max={150}
+            attName={"count"}
+            value={particles.count}
+            changeBgAtt={changeBackgroundAtt}
+          />
+          <Slider
+            max={200}
+            attName={"size"}
+            value={particles.size}
+            changeBgAtt={changeBackgroundAtt}
+          />
+          <ColorPicker
+            name={"color"}
+            onChange={changeBackgroundAtt}
+            value={particles.color}
+          />
+          <input
+            checked={particles.type === "snow"}
+            type={"radio"}
+            name={"type"}
+            onClick={() => changeBackgroundAtt("type", "snow")}
+          />
+          <h3>Circle</h3>
+          <input
+            checked={particles.type === "squere"}
+            type={"radio"}
+            name={"type"}
+            onClick={() => changeBackgroundAtt("type", "squere")}
+          />
+          <h3>Squere</h3>
+          <input
+            checked={particles.type === "heart"}
+            name={"type"}
+            type={"radio"}
+            onClick={() => changeBackgroundAtt("type", "heart")}
+          />
+          <h3>Heart</h3>
+        </React.Fragment>
+      ) : null}
     </React.Fragment>
   );
 };

@@ -36,6 +36,7 @@ export interface ParticlesType {
   count: number;
   type: string;
   color: string;
+  waves: boolean; // temporary position
 }
 
 export interface BackgroundColorType {
@@ -54,7 +55,6 @@ export interface BackgroundType {
   windowHeight: number | null;
   backgroundColor: BackgroundColorType;
   particles: ParticlesType;
-  waves: boolean;
 }
 
 export interface CanvasTypes {

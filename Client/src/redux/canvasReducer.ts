@@ -30,13 +30,13 @@ const initialState: CanvasTypes = {
     },
     particles: {
       count: 150,
-      size: 20,
-      state: true,
+      size: 40,
+      state: false,
       type: "snow",
       color: "#ffffff",
+      waves: false,
     },
     windowHeight: null,
-    waves: true,
   },
 };
 

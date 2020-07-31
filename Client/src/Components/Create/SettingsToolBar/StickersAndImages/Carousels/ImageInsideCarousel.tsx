@@ -11,7 +11,7 @@ interface Props {
 const ImageInCarousel: React.FC<Props> = (props) => {
   const dispatch: any = useDispatch();
   const [src, setSrc] = useState<string>(
-    `http://evlogo.herokuapp.com/${props.src}`
+    `https://evlogo.herokuapp.com/${props.src}`
   );
   let checkErrorHeppend = useRef<boolean>(false);
 
