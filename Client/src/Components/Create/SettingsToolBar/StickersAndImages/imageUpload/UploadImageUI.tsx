@@ -24,7 +24,7 @@ const UploadImageUI: React.FC<Props> = (props) => {
             name={"image"}
             placeholder={"File"}
             defaultValue={props.image?.name || ""}
-            className={"normalInput fileInput"}
+            className={"textInput1 fileInput"}
           />
           <input
             onChange={props.upload}
@@ -50,7 +50,7 @@ const UploadImageUI: React.FC<Props> = (props) => {
           type={"url"}
           name={"image"}
           placeholder={"url"}
-          className={"normalInput"}
+          className={"textInput1"}
           defaultValue={props.imageUrl}
         />
 

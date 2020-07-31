@@ -13,7 +13,7 @@ const SongPick = () => {
   return (
     <div className={"songContainer"}>
       <input
-        className={"normalInput"}
+        className={"textInput1"}
         type={"url"}
         value={song.url}
         name={"Youtube url"}
@@ -24,7 +24,7 @@ const SongPick = () => {
       />
 
       <input
-        className={"normalInput"}
+        className={"textInput1"}
         type={"text"}
         value={song.timeStart}
         onChange={(data) => setSong({ ...song, timeStart: data.target.value })}
@@ -32,7 +32,7 @@ const SongPick = () => {
       />
 
       <input
-        className={"submitButton"}
+        className={"button2"}
         type={"button"}
         value={"Pick song"}
         onClick={() => {

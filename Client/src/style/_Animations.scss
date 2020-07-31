@@ -11,7 +11,68 @@
   }
 }
 
-// snow effect
+// particles
+
+//ballons particles more work need to be donenenenene
+
+// .balloon {
+//   visibility: hidden;
+//   &::after,
+//   &:before {
+//     position: absolute;
+//     content: "";
+//     left: 55%;
+//     width: 80%;
+//     height: 100%;
+//     visibility: visible;
+//     background-color: inherit;
+//     border-radius: 80%;
+//   }
+//   &:after {
+//     content: "444";
+//     position: absolute;
+//     color: black;
+//     bottom: -30px;
+//     width: 30px;
+//     height: 30px;
+//     background-color: black;
+//     left: 50%;
+//   }
+// }
+
+//hearts particles
+.heart {
+  visibility: hidden;
+  &:before,
+  &:after {
+    position: absolute;
+    content: "";
+    left: 55%;
+    top: 0;
+    width: 55%;
+    height: 100%;
+    visibility: visible;
+    background-color: inherit;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+
+  &:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+}
+
+//snow particle
+.snow {
+  border-radius: 50%;
+}
+
+.squere {
+  border-radius: 5%;
+}
 
 @function random_range($min, $max) {
   $rand: random();
@@ -19,14 +80,12 @@
   @return $random_range;
 }
 
-.snow {
-  $total: 170;
+.particles {
+  $total: 150;
   position: fixed;
-  top: 0;
-  width: 10px;
-  height: 10px;
-  background: rgb(255, 255, 255);
-  border-radius: 50%;
+  top: -20vh;
+  left: -7vw;
+  z-index: -1;
 
   @for $i from 1 through $total {
     $random-x: random(1000000) * 0.0001vw;
@@ -34,7 +93,7 @@
     $random-x-end: $random-x + $random-offset;
     $random-x-end-yoyo: $random-x + ($random-offset / 2);
     $random-yoyo-time: random_range(30000, 80000) / 100000;
-    $random-yoyo-y: $random-yoyo-time * 100vh;
+    $random-yoyo-y: $random-yoyo-time * 120vh;
     $random-scale: random(10000) * 0.0001;
     $fall-duration: random_range(10, 40) * 1s;
     $fall-delay: random(30) * -1s;
@@ -51,7 +110,7 @@
       }
 
       to {
-        transform: translate($random-x-end-yoyo, 100vh) scale($random-scale);
+        transform: translate($random-x-end-yoyo, 120vh) scale($random-scale);
       }
     }
   }

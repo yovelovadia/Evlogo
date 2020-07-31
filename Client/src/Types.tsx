@@ -30,8 +30,15 @@ export interface Peragraph {
   textAlign?: string;
 }
 
-export interface BackgroundType {
-  windowHeight: number | null;
+export interface ParticlesType {
+  state: boolean;
+  size: number;
+  count: number;
+  type: string;
+  color: string;
+}
+
+export interface BackgroundColorType {
   color1: string;
   color2: string;
   color2Active: boolean;
@@ -41,8 +48,13 @@ export interface BackgroundType {
   color4Active: boolean;
   degree: number;
   animated: boolean;
+}
+
+export interface BackgroundType {
+  windowHeight: number | null;
+  backgroundColor: BackgroundColorType;
+  particles: ParticlesType;
   waves: boolean;
-  snow: boolean;
 }
 
 export interface CanvasTypes {

@@ -1,7 +1,7 @@
 import React from "react";
-import { BackgroundType } from "../../../Types";
+import { BackgroundColorType } from "../../../Types";
 
-const BackgroundColor: React.FC<{ background: BackgroundType }> = ({
+const BackgroundColor: React.FC<{ background: BackgroundColorType }> = ({
   background,
 }) => {
   return (

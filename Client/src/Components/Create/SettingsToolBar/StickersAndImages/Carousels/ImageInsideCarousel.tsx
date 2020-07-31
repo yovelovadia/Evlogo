@@ -10,7 +10,9 @@ interface Props {
 
 const ImageInCarousel: React.FC<Props> = (props) => {
   const dispatch: any = useDispatch();
-  const [src, setSrc] = useState<string>(`http://localhost:5000/${props.src}`);
+  const [src, setSrc] = useState<string>(
+    `http://evlogo.herokuapp.com/${props.src}`
+  );
   let checkErrorHeppend = useRef<boolean>(false);
 
   return (
@@ -21,7 +23,7 @@ const ImageInCarousel: React.FC<Props> = (props) => {
         alt={"#"}
         onError={() => {
           if (!checkErrorHeppend.current) {
-            setSrc(src.slice(22));
+            setSrc(src.slice(28));
           }
           checkErrorHeppend.current = true;
         }}

@@ -1,21 +1,3 @@
-:root {
-  --main-red-color: #f55757;
-  --main-lighter-black: rgb(54, 54, 54);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  overflow: auto;
-  font-family: Saira Condensed;
-}
-
-/* overAll classes */
-
 .backgroundColors {
   position: fixed;
   width: 100vw;
@@ -24,20 +6,13 @@ body {
   height: auto;
 }
 
-input[type="button"] {
-  outline: none;
-  font-family: Saira Condensed;
-}
-
-.normalInput {
-  outline: none;
-  font-size: 15px;
-  padding: 10px;
-  border: 2px solid var(--main-lighter-black);
-  border-radius: 10px;
-  margin-bottom: 10px;
-  width: 180px;
-  font-weight: bold;
+.sliderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  margin-bottom: 30px;
 }
 
 .slider {
@@ -48,44 +23,18 @@ input[type="button"] {
   outline: none;
   opacity: 0.8;
   cursor: pointer;
-}
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 17px;
-  height: 17px;
-  border-radius: 100%;
-  background-color: var(--main-red-color);
-}
-
-.slider::-webkit-slider-thumb:hover {
-  border: 3px solid var(--main-red-color);
-
-  background-color: white;
-}
-
-.submitButton {
-  border: none;
-  background: var(--main-lighter-black);
-  color: white;
-  font-weight: 100;
-  font-size: 17px;
-  padding: 14px;
-  text-transform: uppercase;
-  border-radius: 6px;
-  display: inline-block;
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-}
-.submitButton:hover {
-  background-color: var(--main-red-color);
-
-  font-weight: 700;
-  letter-spacing: 3px;
-  box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  transition: all 0.3s ease 0s;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 17px;
+    height: 17px;
+    border-radius: 100%;
+    background-color: $primaryRedColor;
+  }
+  &::-webkit-slider-thumb:hover {
+    border: 3px solid $primaryRedColor;
+    background-color: white;
+  }
 }
 
 .grab {
@@ -93,32 +42,15 @@ input[type="button"] {
   cursor: grab;
   cursor: -moz-grab;
   cursor: -webkit-grab;
-}
 
-.grab:active {
-  cursor: grabbing;
-  cursor: -moz-grabbing;
-  cursor: -webkit-grabbing;
-}
-
-a {
-  text-decoration: none;
-}
-
-.colorPicker {
-  width: 35px;
-  height: 35px;
-  border: none;
-  outline: none;
-  background-color: white;
-  padding: 0;
+  &:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
 }
 
 /*canvas*/
-.canvas {
-  overflow-x: hidden;
-}
-
 .trashCan {
   position: fixed;
   cursor: pointer;
@@ -166,37 +98,37 @@ a {
 
 .headerIcons {
   opacity: 0.8;
-}
 
-.headerIcons:hover {
-  opacity: 1;
-}
+  &:hover {
+    opacity: 1;
+  }
 
-.headerIcons:hover > .headerIconsBubble {
-  display: block;
+  &:hover > .headerIconsBubble {
+    display: block;
+  }
 }
 
 .headerIconsBubble {
   position: absolute;
-  background-color: var(--main-red-color);
+  background-color: $primaryRedColor;
   border-radius: 0.4em;
   color: white;
   padding: 10px;
   transform: translate(-30px, 10px);
   display: none;
-}
 
-.headerIconsBubble:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border: 12px solid transparent;
-  border-bottom-color: var(--main-red-color);
-  border-top: 0;
-  margin-top: -10px;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 12px solid transparent;
+    border-bottom-color: $primaryRedColor;
+    border-top: 0;
+    margin-top: -10px;
+  }
 }
 
 .sectionContainer {
@@ -214,11 +146,11 @@ a {
   line-height: 0.1em;
   margin: 100px 0;
   font-family: Farsan;
-}
 
-.sectionContainerHeader span {
-  background: white;
-  padding: 0 10px;
+  span {
+    background: white;
+    padding: 0 10px;
+  }
 }
 
 .backgroudCarousel {
@@ -232,17 +164,16 @@ a {
 }
 
 /* backgroundColors/container */
-
-.backgroudContainer {
+.backgroudColorContainer {
   display: flex;
   width: 90%;
   justify-content: space-around;
 }
 
-.degreeSlider {
+.backgroundColorSub {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
 }
 
 /* images/stickers */
@@ -279,15 +210,15 @@ a {
 .addStickerButton {
   width: 95%;
   opacity: 0;
-  background-color: var(--main-red-color);
+  background-color: $primaryRedColor;
   color: white;
   border-radius: 5px;
   border: none;
   height: 20px;
-}
 
-.addStickerButton:active {
-  box-shadow: inset 1px 1px 5px var(--main-lighter-black);
+  &:active {
+    box-shadow: inset 1px 1px 5px $primaryBlackColor;
+  }
 }
 
 /* uploadImage */
@@ -325,13 +256,13 @@ a {
 .uploadImageButton {
   padding: 5px 20px;
   background-color: white;
-  border: 2px solid var(--main-lighter-black);
+  border: 2px solid $primaryBlackColor;
   border-radius: 10px;
   cursor: pointer;
   font-size: 20px;
 }
 .uploadImageButton:hover {
-  background-color: var(--main-red-color);
+  background-color: $primaryRedColor;
 }
 
 /* peragraph /peragraph tool bar */
@@ -369,8 +300,8 @@ a {
   outline: none;
   border: none;
   font-size: 20px;
-  border-top: 1px solid var(--main-lighter-black);
-  border-right: 1px solid var(--main-lighter-black);
+  border-top: 1px solid $primaryBlackColor;
+  border-right: 1px solid $primaryBlackColor;
   border-radius: 5px;
 }
 
@@ -378,10 +309,10 @@ a {
   display: flex;
   margin: 20px 0;
   width: 140px;
-  color: var(--main-lighter-black);
+  color: $primaryBlackColor;
   padding: 5px;
   align-items: center;
-  border-bottom: 1px solid var(--main-lighter-black);
+  border-bottom: 1px solid $primaryBlackColor;
 }
 .numbersInputContainer h3 {
   margin-left: 10px;
@@ -389,7 +320,7 @@ a {
 
 .fontFamilySelector {
   border: none;
-  background-color: var(--main-lighter-black);
+  background-color: $primaryBlackColor;
   color: white;
   font-size: 20px;
   border-radius: 5px;
@@ -406,7 +337,7 @@ a {
 /* finished */
 
 .finished {
-  background-color: var(--main-lighter-black);
+  background-color: $primaryBlackColor;
   padding: 100px 0;
   margin-top: 50px;
   position: relative;
@@ -475,55 +406,13 @@ a {
 
 /* preview button */
 
-.coolAnimatedButton {
-  display: block;
-  width: 200px;
-  height: 40px;
-  line-height: 40px;
-  font-size: 18px;
-  font-family: sans-serif;
-  text-decoration: none;
-  color: black;
-  border: 2px solid black;
-  letter-spacing: 2px;
-  text-align: center;
-  position: sticky;
-  transition: all 0.35s;
-  border-radius: 10px;
-}
-
-.coolAnimatedButton span {
-  position: relative;
-  z-index: 2;
-}
-
-.coolAnimatedButton:after {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: var(--main-red-color);
-  border-radius: 8px;
-  transition: all 0.35s;
-}
-
-.coolAnimatedButton:hover {
-  color: white;
-}
-
-.coolAnimatedButton:hover:after {
-  width: 100%;
-}
-
 /* scrollbars  */
 .toolBar::-webkit-scrollbar {
   width: 0.4em;
 }
 
 .toolBar::-webkit-scrollbar-thumb {
-  background-color: var(--main-lighter-black);
+  background-color: $primaryBlackColor;
   border-radius: 10px;
 }
 .previewContainer::-webkit-scrollbar {
@@ -531,7 +420,7 @@ a {
 }
 
 .previewContainer::-webkit-scrollbar-thumb {
-  background-color: var(--main-lighter-black);
+  background-color: $primaryBlackColor;
   border-radius: 10px;
 }
 
@@ -540,5 +429,5 @@ a {
 }
 
 .blessingTextArea::-webkit-scrollbar-thumb {
-  background-color: var(--main-lighter-black);
+  background-color: $primaryBlackColor;
 }

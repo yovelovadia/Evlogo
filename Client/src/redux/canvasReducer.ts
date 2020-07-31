@@ -17,18 +17,26 @@ const initialState: CanvasTypes = {
   },
   song: "",
   background: {
+    backgroundColor: {
+      color1: "#ee7752",
+      color2: "#e73c7e",
+      color2Active: true,
+      color3: "#23a6d5",
+      color3Active: true,
+      color4: "#23d5ab",
+      color4Active: true,
+      degree: 90,
+      animated: true,
+    },
+    particles: {
+      count: 150,
+      size: 20,
+      state: true,
+      type: "snow",
+      color: "#ffffff",
+    },
     windowHeight: null,
-    color1: "#ee7752",
-    color2: "#e73c7e",
-    color2Active: true,
-    color3: "#23a6d5",
-    color3Active: true,
-    color4: "#23d5ab",
-    color4Active: true,
-    degree: 90,
-    animated: true,
     waves: true,
-    snow: false,
   },
 };
 
@@ -55,12 +63,30 @@ const canvasReducer = (state = initialState, action) => {
     case actions.BACKGROUND_CHANGE_ATT:
       const bgValue: string | boolean = action.value.bgValue;
       const bgKey: string = action.value.bgKey;
-      const background: CanvasTypes = {
+      const bgSection: string = action.value.bgSection;
+
+      const backgroundColor: CanvasTypes = {
         ...state,
-        background: { ...state.background, [bgKey]: bgValue },
+        background: {
+          ...state.background,
+          [bgSection]: {
+            ...state.background[bgSection],
+            [bgKey]: bgValue,
+          },
+        },
       };
 
-      return background;
+      return backgroundColor;
+
+    // case actions.BACKGROUND_CHANGE_ATT:
+    //   const bgValue: string | boolean = action.value.bgValue;
+    //   const bgKey: string = action.value.bgKey;
+    //   const background: CanvasTypes = {
+    //     ...state,
+    //     background: { ...state.background, [bgKey]: bgValue },
+    //   };
+
+    //   return background;
 
     case actions.IMAGE_ADD:
       const imageAdd: CanvasTypes = {

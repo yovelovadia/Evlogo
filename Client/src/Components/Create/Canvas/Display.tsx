@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Waves from "../Animations/Waves";
-import Snow from "../Animations/Snow";
+import Particles from "../Animations/Particles";
 import BackgroundColor from "../Animations/BackgroundColor";
 import * as Type from "../../../Types";
 import CanvasStage from "./CanvasContainer";
@@ -13,9 +13,12 @@ const Display = () => {
   const images: { [key: string]: Type.ImageType } = data.images;
   return (
     <React.Fragment>
-      <BackgroundColor background={background} />
+      <BackgroundColor background={background.backgroundColor} />
       <CanvasStage images={images} peragraph={peragraph} />
-      {background.snow ? <Snow /> : null}
+
+      {background.particles.state ? (
+        <Particles particles={background.particles} />
+      ) : null}
       {background.waves ? <Waves /> : null}
     </React.Fragment>
   );

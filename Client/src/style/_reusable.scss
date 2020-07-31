@@ -1,0 +1,306 @@
+// reusable items
+
+//logo
+.logo {
+  color: white;
+  letter-spacing: 4px;
+  margin-left: 15px;
+  font-size: 40px;
+  font-family: Farsan;
+}
+
+//animated button1
+.button1 {
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: black;
+  border: 2px solid black;
+  letter-spacing: 2px;
+  text-align: center;
+  position: sticky;
+  transition: all 0.35s;
+  border-radius: 10px;
+
+  &:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: $primaryRedColor;
+    border-radius: 8px;
+    transition: all 0.35s;
+  }
+
+  &:hover {
+    color: white;
+  }
+
+  &:hover:after {
+    width: 100%;
+  }
+
+  span {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+//animated button2
+.button2 {
+  border: none;
+  background: $primaryBlackColor;
+  color: white;
+  font-weight: 100;
+  font-size: 17px;
+  padding: 14px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $primaryRedColor;
+    font-weight: 700;
+    letter-spacing: 3px;
+    box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    transition: all 0.3s ease 0s;
+  }
+}
+
+//text input
+.textInput1 {
+  border: 2px solid $primaryBlackColor;
+  padding: 10px 20px;
+  width: 170px;
+  border-radius: 10px;
+  font-size: 15px;
+  height: 20px;
+  outline: none;
+  font-family: sans-serif;
+}
+
+//color picker
+.colorPicker {
+  width: 35px;
+  height: 35px;
+  border: none;
+  outline: none;
+  background-color: white;
+  padding: 0;
+}
+
+/*loading indicator */
+.loadingIndicator {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 43px;
+  div {
+    position: absolute;
+    top: 15px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: black;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+
+    &:nth-child(1) {
+      left: 8px;
+      animation: lds-ellipsis1 0.6s infinite;
+    }
+    &:nth-child(2) {
+      left: 8px;
+      animation: lds-ellipsis2 0.6s infinite;
+    }
+    &:nth-child(3) {
+      left: 32px;
+      animation: lds-ellipsis2 0.6s infinite;
+    }
+    &:nth-child(4) {
+      left: 56px;
+      animation: lds-ellipsis3 0.6s infinite;
+    }
+  }
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+// animated inputs
+
+.field {
+  --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #d3d3d3);
+}
+
+.field__input {
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-family: inherit;
+  font-size: 1em;
+}
+
+.field__input:focus::-webkit-input-placeholder {
+  color: var(--uiFieldPlaceholderColor);
+}
+
+.field__input:focus::-moz-placeholder {
+  color: var(--uiFieldPlaceholderColor);
+  opacity: 1;
+}
+
+.a-field {
+  display: inline-block;
+  margin-bottom: 60px;
+}
+
+.a-field__input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.a-field__input:focus {
+  outline: none;
+}
+
+.a-field {
+  --uiFieldHeight: var(--fieldHeight, 2.5rem);
+  --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
+  --uiFieldBorderColor: var(--fieldBorderColor);
+
+  --uiFieldFontSize: var(--fieldFontSize, 1rem);
+  --uiFieldHintFontSize: var(--fieldHintFontSize, 1rem);
+
+  --uiFieldPaddingRight: var(--fieldPaddingRight, 1rem);
+  --uiFieldPaddingBottom: var(--fieldPaddingBottom, 1rem);
+  --uiFieldPaddingLeft: var(--fieldPaddingLeft, 1rem);
+
+  position: relative;
+  box-sizing: border-box;
+  font-size: var(--uiFieldFontSize);
+  padding-top: 1rem;
+}
+
+.a-field__input {
+  height: var(--uiFieldHeight);
+  padding: 0 var(--uiFieldPaddingRight) 0 var(--uiFieldPaddingLeft);
+  border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColor);
+}
+
+.a-field__input::-webkit-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.a-field__input::-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.a-field__input:not(:placeholder-shown) ~ .a-field__label-wrap .a-field__label {
+  opacity: 0;
+  bottom: var(--uiFieldPaddingBottom);
+}
+
+.a-field__input:focus::-webkit-input-placeholder {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.a-field__input:focus::-moz-placeholder {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.a-field__label-wrap {
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--uiFieldHeight);
+  pointer-events: none;
+  cursor: text;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.a-field__label {
+  position: absolute;
+  left: var(--uiFieldPaddingLeft);
+  bottom: calc(50% - 0.5em);
+
+  line-height: 1;
+  font-size: var(--uiFieldHintFontSize);
+
+  pointer-events: none;
+  transition: bottom 0.2s cubic-bezier(0.9, -0.15, 0.1, 1.15),
+    opacity 0.2s ease-out;
+  will-change: bottom, opacity;
+}
+
+.a-field__input:focus ~ .a-field__label-wrap .a-field__label {
+  opacity: 1;
+  bottom: var(--uiFieldHeight);
+}
+
+.a-field_a2 .a-field__label-wrap::after {
+  content: "";
+  box-sizing: border-box;
+  width: 0;
+  height: var(--uiFieldBorderWidth);
+  background-color: var(--fieldBorderColorActive);
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  will-change: width;
+  transition: width 0.285s ease-out;
+}
+
+.a-field_a2 .a-field__input:focus ~ .a-field__label-wrap::after {
+  width: 100%;
+}
+
+.field {
+  --fieldBorderColor: #000000;
+  --fieldBorderColorActive: rgb(
+    125,
+    205,
+    252
+  ); // not working on primary color from some reason
+}

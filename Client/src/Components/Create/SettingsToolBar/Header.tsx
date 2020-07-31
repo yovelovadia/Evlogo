@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <div className={"ToolsHeadersContainer"}>
       <Link to={"preview"}>
-        <div className={"coolAnimatedButton"}>
+        <div className={"button1"}>
           <span>Preview</span>
         </div>
       </Link>

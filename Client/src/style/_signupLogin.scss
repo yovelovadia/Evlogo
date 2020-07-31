@@ -1,0 +1,73 @@
+/*signup and login screens*/
+.signupLoginContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+}
+
+.separatorLine {
+  height: 80%;
+  width: 2px;
+  opacity: 0.7;
+  align-self: center;
+  color: black;
+  background-color: black;
+  margin: 0 50px;
+}
+
+.inputsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginSignupHeader {
+  font-family: Saira Condensed;
+  font-size: 60px;
+}
+
+.loginSignupSubHeader {
+  display: flex;
+  font-size: 20px;
+  padding: 30px 0;
+}
+.loginSignupLink {
+  color: $primaryLightBlue;
+  margin-left: 5px;
+}
+
+.submitButtonHome:hover {
+  background-color: $primaryLightBlue;
+}
+
+.loginOtherWay {
+  display: flex;
+  align-items: center;
+}
+
+.submitForm {
+  display: flex;
+  align-items: center;
+}
+
+.messageResponse {
+  padding: 20px 0;
+  font-family: Saira Condensed;
+  white-space: pre-wrap;
+}
+
+@media only screen and (max-width: 1015px) {
+  .homeAnimatedButton {
+  }
+  .links {
+    flex-direction: column-reverse;
+    align-items: center;
+    width: unset;
+  }
+}

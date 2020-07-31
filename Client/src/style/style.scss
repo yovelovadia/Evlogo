@@ -1,0 +1,32 @@
+$primaryLightBlue: rgb(125, 205, 252);
+$primaryRedColor: #f55757;
+$primaryBlackColor: rgb(54, 54, 54);
+
+@import "./fonts";
+@import "./reusable";
+@import "./activityStyle/activity";
+@import "./home";
+@import "./Animations";
+@import "./signupLogin";
+
+//default
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: Saira Condensed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}

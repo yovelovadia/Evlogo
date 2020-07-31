@@ -1,10 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./style/activity.css";
-import "./style/home.css";
-import "./style/Animations.scss";
-import "./style/fonts.css";
-
+import "./style/style.scss";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { createStore, compose } from "redux";

@@ -4,7 +4,7 @@ import { CanvasTypes } from "../Types";
 import Typist from "react-typist";
 import fadeInAnimation from "../customeFunctions/fadeInAnimation";
 import Waves from "../Components/Create/Animations/Waves";
-import Snow from "../Components/Create/Animations/Snow";
+import Particles from "../Components/Create/Animations/Particles";
 import BackgroundColor from "../Components/Create/Animations/BackgroundColor";
 
 const File: React.FC = (props: any) => {
@@ -33,7 +33,9 @@ const File: React.FC = (props: any) => {
 
   return (
     <React.Fragment>
-      {canvas ? <BackgroundColor background={canvas.background} /> : null}
+      {canvas ? (
+        <BackgroundColor background={canvas.background.backgroundColor} />
+      ) : null}
       <div className={"previewContainer"}>
         {/* song in background */}
         <iframe
@@ -52,7 +54,13 @@ const File: React.FC = (props: any) => {
 
         {start ? (
           <React.Fragment>
-            {canvas.background.snow ? <Snow /> : null}
+            {/* {canvas.background.particles ? (
+              <Particles
+                count={canvas.background.particlesCount}
+                type={canvas.background.particlesType}
+                size={canvas.background.particlesSize}
+              />
+            ) : null} */}
             {canvas.background.waves ? <Waves /> : null}
             {/* peragraph */}
             <Typist>

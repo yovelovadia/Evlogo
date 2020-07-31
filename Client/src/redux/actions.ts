@@ -20,8 +20,11 @@ export const peragraphChangeAtt = (peraValue, peraKey) => {
   return { type: actions.PERAGRAPH_CHANGE_ATT, value: { peraValue, peraKey } };
 };
 
-export const backgroundChangeAtt = (bgKey, bgValue) => {
-  return { type: actions.BACKGROUND_CHANGE_ATT, value: { bgKey, bgValue } };
+export const backgroundChangeAtt = (bgKey, bgValue, bgSection) => {
+  return {
+    type: actions.BACKGROUND_CHANGE_ATT,
+    value: { bgKey, bgValue, bgSection },
+  };
 };
 
 export const songUrl = (value) => {

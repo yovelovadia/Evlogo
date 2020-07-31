@@ -9,7 +9,7 @@ const SectionContainer: React.FC<Props> = ({ children, id }) => {
   return (
     <div id={id} className={"sectionContainer"}>
       <h1 className={"sectionContainerHeader"}>
-        <span>Background</span>
+        <span>{id}</span>
       </h1>
       {children}
     </div>

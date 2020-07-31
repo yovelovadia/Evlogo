@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import Waves from "../Components/Create/Animations/Waves";
-import Snow from "../Components/Create/Animations/Snow";
+import Particles from "../Components/Create/Animations/Particles";
 import fadeInAnimation from "../customeFunctions/fadeInAnimation";
 import Typist from "react-typist";
 import { ImageType, CanvasTypes, BackgroundType, Peragraph } from "../Types";
@@ -38,13 +38,10 @@ const PreviewScreen: React.FC = () => {
 
   return (
     <div ref={screenRef} className={"previewContainer"}>
-      <BackgroundColor background={background} />
+      <BackgroundColor background={background.backgroundColor} />
 
       <Link to={"/create"}>
-        <div
-          style={{ position: "fixed", zIndex: 1 }}
-          className={"coolAnimatedButton"}
-        >
+        <div style={{ position: "fixed", zIndex: 1 }} className={"button1"}>
           <span>Back</span>
         </div>
       </Link>
@@ -67,7 +64,13 @@ const PreviewScreen: React.FC = () => {
 
       {start ? (
         <React.Fragment>
-          {background.snow ? <Snow /> : null}
+          {/* {background.particles ? (
+            <Particles
+              count={background.particlesCount}
+              type={background.particlesType}
+              size={background.particlesSize}
+            />
+          ) : null} */}
           {background.waves ? <Waves /> : null}
           {/* peragraph */}
           <Typist ref={peragraphRef} show={false} avgTypingDelay={100}>

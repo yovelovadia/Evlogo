@@ -17,44 +17,35 @@ const HomeScreen = () => {
               </a>
             </li>
             <li>
-              <a
-                href={"/signup"}
-                className={"coolAnimatedButton homeAnimatedButton"}
-              >
+              <a href={"/signup"} className={"button1 homeAnimatedButton"}>
                 <span>GET STARTED</span>
               </a>
             </li>
           </ul>
         </header>
         <div className={"titleContainer"}>
-          <h1 className={"title"}>Lorem ipsum dolor</h1>
-          <h5 className={"subTitle"}>
-            Evlogo gives u the tools to build an awesome blessing
-          </h5>
+          <h1>Lorem ipsum dolor</h1>
+          <h2>Evlogo gives u the tools to build an awesome blessing</h2>
         </div>
       </div>
       <h2 className={"title2"}>About</h2>
       <div className={"iconsContainer"}>
         <div className={"iconContainer"}>
           <MdTimer size={120} />
-          <h3 className={"iconHeader"}>Quick</h3>
-          <h4 className={"iconPeragraph"}>Create cool blessings in no time</h4>
+          <h3>Quick</h3>
+          <h4>Create cool blessings in no time</h4>
         </div>
         <div className={"iconContainer"}>
           <MdDesktopWindows size={120} />
 
-          <h3 className={"iconHeader"}>Simple</h3>
-          <h4 className={"iconPeragraph"}>
-            No learning curve just dive in and create!
-          </h4>
+          <h3>Simple</h3>
+          <h4>No learning curve just dive in and create!</h4>
         </div>
         <div className={"iconContainer"}>
           <MdShare size={120} />
 
-          <h3 className={"iconHeader"}>Easy share</h3>
-          <h4 className={"iconPeragraph"}>
-            Get a link and share. Easy as that!
-          </h4>
+          <h3>Easy share</h3>
+          <h4>Get a link and share. Easy as that!</h4>
         </div>
       </div>
       <div className={"horizontalSapartorLine"}>
@@ -98,10 +89,7 @@ const HomeScreen = () => {
           src={require("../Assets/homeImage4.png")}
         />
       </div>
-      <a
-        href={"/signup"}
-        className={"coolAnimatedButton coolAnimatedButtonBottom"}
-      >
+      <a href={"/signup"} className={"button1 homeAnimatedButtonBottom"}>
         <span>GET STARTED</span>
       </a>
       <footer className={"footer"}>

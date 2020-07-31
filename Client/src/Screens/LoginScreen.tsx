@@ -86,7 +86,7 @@ const LoginScreen: React.FC = () => {
             <LoadingIndicator color={"black"} />
           ) : (
             <input
-              className={"submitButton submitButtonHome"}
+              className={"button2 submitButtonHome"}
               type={"button"}
               value={"Login"}
               onClick={submitForm}
