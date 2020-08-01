@@ -27,6 +27,6 @@ export const backgroundChangeAtt = (bgKey, bgValue, bgSection) => {
   };
 };
 
-export const songUrl = (value) => {
-  return { type: actions.SONG_ADD_URL, value };
+export const songAdd = ({ url, start }) => {
+  return { type: actions.SONG_ADD, value: { url, start } };
 };

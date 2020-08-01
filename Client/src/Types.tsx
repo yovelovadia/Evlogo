@@ -51,6 +51,11 @@ export interface BackgroundColorType {
   animated: boolean;
 }
 
+export interface SongType {
+  url: string | null;
+  start: string;
+}
+
 export interface BackgroundType {
   windowHeight: number | null;
   backgroundColor: BackgroundColorType;

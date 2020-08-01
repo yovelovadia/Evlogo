@@ -15,7 +15,6 @@ const initialState: CanvasTypes = {
     x: 100,
     y: 100,
   },
-  song: "",
   background: {
     backgroundColor: {
       color1: "#ee7752",
@@ -78,16 +77,6 @@ const canvasReducer = (state = initialState, action) => {
 
       return backgroundColor;
 
-    // case actions.BACKGROUND_CHANGE_ATT:
-    //   const bgValue: string | boolean = action.value.bgValue;
-    //   const bgKey: string = action.value.bgKey;
-    //   const background: CanvasTypes = {
-    //     ...state,
-    //     background: { ...state.background, [bgKey]: bgValue },
-    //   };
-
-    //   return background;
-
     case actions.IMAGE_ADD:
       const imageAdd: CanvasTypes = {
         ...state,
@@ -133,12 +122,13 @@ const canvasReducer = (state = initialState, action) => {
 
       return imageCord;
 
-    case actions.SONG_ADD_URL:
-      const timeStart: string | undefined = action.value.timeStart;
+    case actions.SONG_ADD:
+      const start: number = action.value.start;
+      const url: string = action.value.url;
       const songAdd: string =
-        action.value?.url.replace("watch?v=", "embed/") +
+        url?.replace("watch?v=", "embed/") +
         "?autoplay=1" +
-        `;start=${timeStart ? timeStart : 0}`;
+        `;start=${start ? start : 0}`;
 
       const song: CanvasTypes = { ...state, song: songAdd };
 

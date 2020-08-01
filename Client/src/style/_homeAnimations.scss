@@ -1,0 +1,223 @@
+$dotColor: $primaryBlackColor;
+$fontColor: rgb(255, 255, 255);
+$block1Color: rgb(255, 93, 93);
+$block2Color: $primaryBlackColor;
+
+.container {
+  display: flex;
+  justify-content: center;
+
+  .box {
+    width: 50%;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .title {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 9vw;
+      margin-bottom: 5px;
+
+      .block {
+        width: 0%;
+        height: 100%;
+        height: inherit;
+        background: $block1Color;
+        position: absolute;
+        animation: mainBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+        display: flex;
+      }
+
+      h1 {
+        font-family: "Farsan";
+        color: $fontColor;
+        font-size: 7vw;
+        -webkit-animation: mainFadeIn 2s forwards;
+        -o-animation: mainFadeIn 2s forwards;
+        animation: mainFadeIn 2s forwards;
+        animation-delay: 1.6s;
+        opacity: 0;
+        display: flex;
+        align-items: baseline;
+        position: relative;
+        text-align: center;
+        letter-spacing: 4px;
+
+        span {
+          position: absolute;
+          width: 0;
+          height: 0;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+          background: $dotColor;
+          -webkit-animation: load 0.6s cubic-bezier(0.74, 0.06, 0.4, 0.92)
+            forwards;
+          animation: popIn 0.8s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+          animation-delay: 2s;
+          right: -8%;
+        }
+      }
+    }
+
+    .title2 {
+      @extend .title;
+      width: 50%;
+      padding: 0;
+    }
+
+    .role {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 60px;
+      margin-top: 100px;
+
+      .block {
+        width: 0%;
+        height: inherit;
+        background: $block2Color;
+        position: absolute;
+        animation: secBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+        animation-delay: 2s;
+        display: flex;
+      }
+
+      p {
+        animation: secFadeIn 2s forwards;
+        animation-delay: 3.4s;
+        opacity: 0;
+        font-weight: 400;
+        color: $fontColor;
+        font-size: 2vw;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+      }
+    }
+  }
+}
+
+@keyframes mainBlock {
+  0% {
+    width: 0%;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+
+@keyframes secBlock {
+  0% {
+    width: 0%;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+
+@keyframes mainFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    width: 0px;
+    height: 0px;
+    background: $dotColor;
+    border: 0px solid #ddd;
+    opacity: 0;
+  }
+  50% {
+    width: 1vw;
+    height: 1vw;
+    background: $dotColor;
+    opacity: 1;
+    bottom: 60%;
+  }
+  65% {
+    width: 0.7vw;
+    height: 0.7vw;
+    bottom: 0;
+  }
+  80% {
+    width: 1vw;
+    height: 1vw;
+    bottom: 35%;
+  }
+  100% {
+    width: 1vw;
+    height: 1vw;
+    background: $dotColor;
+    border: 0px solid #222;
+    bottom: 25%;
+  }
+}
+
+@keyframes secFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes top {
+  0% {
+    opacity: 0;
+    bottom: -80px;
+  }
+  100% {
+    opacity: 1;
+    bottom: 0px;
+  }
+}
+
+@media only screen and (max-width: 814px) {
+  .container {
+    .box {
+      width: 90%;
+      height: 200px;
+      margin-top: 100px;
+
+      .title {
+        // width: 140%;
+        height: 70px;
+
+        h1 {
+          font-size: 50px;
+          letter-spacing: 0;
+        }
+      }
+
+      .role {
+        p {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}

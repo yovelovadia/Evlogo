@@ -46,6 +46,9 @@ const LoginScreen: React.FC = () => {
   };
   return (
     <div className={"background"}>
+      {/* <Link to={"/"}>
+        <h1 className={"logoOther"}>EVLOGO</h1>
+      </Link> */}
       <div className={"signupLoginContainer"}>
         <h1 className={"loginSignupHeader"}>Login</h1>
         <h3 className={"loginSignupSubHeader"}>

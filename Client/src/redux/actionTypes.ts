@@ -4,4 +4,4 @@ export const BACKGROUND_CHANGE_ATT: string = "BACKGROUND_CHANGE_ATT";
 export const IMAGE_ADD: string = "IMAGE_ADD";
 export const IMAGE_CORDINATES: string = "IMAGE_CORDINATES";
 export const IMAGE_DELETE: string = "IMAGE_DELETE";
-export const SONG_ADD_URL: string = "SONG_ADD_URL";
+export const SONG_ADD: string = "SONG_ADD_URL";

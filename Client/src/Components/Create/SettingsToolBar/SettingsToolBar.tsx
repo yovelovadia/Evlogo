@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CanvasTypes } from "../../../Types";
 import PeragraphTextArea from "./peragraphTextArea/PeragraphTextArea";
-import SongPick from "./SongPick";
+import Song from "./Song/Song";
 import Header from "./Header";
 import Background from "./Background/Background";
 import Finished from "./Finished";
@@ -30,7 +30,7 @@ const SettingsToolBar: React.FC = () => {
       </SectionContainer>
 
       <SectionContainer id={"Song"}>
-        <SongPick />
+        <Song />
       </SectionContainer>
 
       <Finished />

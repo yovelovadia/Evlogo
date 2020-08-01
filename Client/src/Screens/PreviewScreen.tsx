@@ -47,7 +47,7 @@ const PreviewScreen: React.FC = () => {
       </Link>
 
       {/* song in background */}
-      <iframe
+      {/* <iframe
         onLoad={() => {
           setTimeout(() => {
             setStart(true);
@@ -59,7 +59,7 @@ const PreviewScreen: React.FC = () => {
         frameBorder={"0"}
         allow={"autoplay"}
         title={"song"}
-      ></iframe>
+      ></iframe> */}
       {/* will start only after song is loaded and starting to play */}
 
       {start ? (

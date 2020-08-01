@@ -23,11 +23,29 @@ const HomeScreen = () => {
             </li>
           </ul>
         </header>
-        <div className={"titleContainer"}>
-          <h1>Lorem ipsum dolor</h1>
-          <h2>Evlogo gives u the tools to build an awesome blessing</h2>
+        {/* animated title and sub title */}
+        <div className={"container"}>
+          <div className={"box"}>
+            <div className={"title"}>
+              <span className={"block"}></span>
+              <h1>Lorem ipsum dolor</h1>
+            </div>
+
+            <div className={"title2"}>
+              <span className={"block"}></span>
+              <h1>
+                sit amet<span></span>
+              </h1>
+            </div>
+
+            <div className={"role"}>
+              <div className={"block"}></div>
+              <p>Evlogo gives you the tools to create an awasome blessing</p>
+            </div>
+          </div>
         </div>
       </div>
+      {/* going down */}
       <h2 className={"title2"}>About</h2>
       <div className={"iconsContainer"}>
         <div className={"iconContainer"}>

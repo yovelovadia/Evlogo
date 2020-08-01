@@ -1,13 +1,15 @@
 $primaryLightBlue: rgb(125, 205, 252);
 $primaryRedColor: #f55757;
 $primaryBlackColor: rgb(54, 54, 54);
+$homeColors: white;
 
 @import "./fonts";
 @import "./reusable";
-@import "./activityStyle/activity";
+@import "./activity";
 @import "./home";
 @import "./Animations";
 @import "./signupLogin";
+@import "./homeAnimations";
 
 //default
 body {

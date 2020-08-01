@@ -334,6 +334,21 @@
   text-align: center;
 }
 
+.songVideoContainer {
+  margin-top: 40px;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.songError {
+  position: absolute;
+  font-size: 18px;
+  bottom: 30px;
+  left: 50px;
+  z-index: -1;
+}
+
 /* finished */
 
 .finished {

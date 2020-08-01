@@ -38,7 +38,7 @@ const File: React.FC = (props: any) => {
       ) : null}
       <div className={"previewContainer"}>
         {/* song in background */}
-        <iframe
+        {/* <iframe
           onLoad={() => {
             setTimeout(() => {
               setStart(true);
@@ -50,7 +50,7 @@ const File: React.FC = (props: any) => {
           frameBorder={"0"}
           allow={"autoplay"}
           title={"song"}
-        ></iframe>
+        ></iframe> */}
 
         {start ? (
           <React.Fragment>

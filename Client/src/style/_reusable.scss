@@ -2,11 +2,17 @@
 
 //logo
 .logo {
-  color: white;
+  color: $homeColors;
   letter-spacing: 4px;
   margin-left: 15px;
   font-size: 40px;
   font-family: Farsan;
+}
+
+.logoOther {
+  @extend .logo;
+  color: $primaryBlackColor;
+  position: absolute;
 }
 
 //animated button1

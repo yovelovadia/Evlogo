@@ -4,7 +4,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -35,7 +35,7 @@
 .loginSignupSubHeader {
   display: flex;
   font-size: 20px;
-  padding: 30px 0;
+  padding: 10px 0;
 }
 .loginSignupLink {
   color: $primaryLightBlue;
@@ -57,7 +57,7 @@
 }
 
 .messageResponse {
-  padding: 20px 0;
+  padding-top: 10px;
   font-family: Saira Condensed;
   white-space: pre-wrap;
 }

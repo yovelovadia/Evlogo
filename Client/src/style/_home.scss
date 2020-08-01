@@ -16,6 +16,7 @@ h5 {
   background-image: url("../Assets/homeImage.png");
   background-repeat: no-repeat;
   background-size: cover;
+  border-bottom: 3px solid black;
 }
 
 /* header */
@@ -31,20 +32,20 @@ h5 {
   width: 25%;
   align-items: baseline;
   justify-content: space-around;
-  color: white;
+  color: $homeColors;
   font-family: Saira Condensed;
   list-style: none;
 }
 
 //used with animatedButton1
 .homeAnimatedButton {
-  border: 1px solid white;
-  color: white;
+  border: 1px solid $homeColors;
+  color: $homeColors;
   font-family: Saira Condensed;
 
   &:after {
     color: black;
-    background: rgb(241, 241, 241);
+    background: $homeColors;
   }
 
   &:hover {
@@ -53,7 +54,7 @@ h5 {
 }
 
 .homeLoginButton {
-  color: white;
+  color: $homeColors;
   font-size: 1.4em;
 }
 
@@ -62,24 +63,6 @@ h5 {
   left: 50%;
   transform: translate(-50%);
   margin-bottom: 30px;
-}
-
-/* title */
-.titleContainer {
-  position: absolute;
-  top: 30%;
-  width: 100%;
-  text-align: center;
-  color: white;
-
-  h1 {
-    font-size: 110px;
-    font-family: Farsan;
-  }
-
-  h2 {
-    font-size: 3em;
-  }
 }
 
 /* about and such */
@@ -195,16 +178,6 @@ h5 {
 }
 
 @media only screen and (max-width: 814px) {
-  .titleContainer {
-    h1 {
-      font-size: 70px;
-    }
-    h2 {
-      margin-top: 40px;
-      font-size: 35px;
-    }
-  }
-
   .iconsContainer {
     flex-direction: column;
     height: 850px;
