@@ -13,7 +13,7 @@
     "imagemin-pngquant": "^9.0.0",
     "imagemin-webp": "^6.0.0",
     "is-jpg": "^2.0.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.9.21",
     "mozjpeg": "^7.0.0",
     "multer": "^1.4.2",
